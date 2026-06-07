@@ -396,30 +396,60 @@
 }
 .landing-cta-demo:hover { opacity: 0.88; }
 
-/* Hero */
-.landing-hero {
-  max-width: 720px; margin: 0 auto;
-  padding: 72px 24px 56px;
-  text-align: center;
+/* Split hero */
+.landing-hero-split {
+  max-width: 1080px; margin: 0 auto;
+  padding: 56px 24px 48px;
+  display: grid; grid-template-columns: 1fr 480px;
+  gap: 48px; align-items: center;
 }
+@media (max-width: 860px) {
+  .landing-hero-split { grid-template-columns: 1fr; gap: 40px; }
+}
+.landing-hero-text { display: flex; flex-direction: column; align-items: flex-start; }
+
+/* 3D viewer in hero */
+.landing-hero-band {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.landing-hero-band-viewer {
+  width: 100%; height: 420px;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 50% 40%, var(--brand-light) 0%, transparent 65%);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+.landing-band-ring-fallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+.landing-hero-band-label {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
+}
+.landing-hero-band-name {
+  font-family: var(--font-serif); font-size: 22px; font-weight: 300; color: var(--text);
+}
+.landing-hero-band-sub { font-size: 13px; color: var(--text-muted); }
+
+/* Hero badge + type */
 .landing-hero-badge {
   display: inline-block;
   font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
   color: var(--brand); background: var(--brand-light);
-  padding: 4px 12px; border-radius: 999px; margin-bottom: 24px;
+  padding: 4px 12px; border-radius: 999px; margin-bottom: 20px;
 }
 .landing-h1 {
   font-family: var(--font-serif);
-  font-size: clamp(36px, 6vw, 64px);
+  font-size: clamp(32px, 4vw, 54px);
   font-weight: 300; line-height: 1.12;
-  color: var(--text); margin: 0 0 20px;
+  color: var(--text); margin: 0 0 18px;
 }
 .landing-h1-accent { color: var(--brand); }
 .landing-hero-sub {
-  font-size: 17px; line-height: 1.7; color: var(--text-muted);
-  max-width: 560px; margin: 0 auto 36px;
+  font-size: 16px; line-height: 1.7; color: var(--text-muted);
+  max-width: 520px; margin: 0 0 32px;
 }
-.landing-hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.landing-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
 .landing-cta-primary {
   background: var(--brand); color: #fff;
   font-family: var(--font-sans); font-size: 15px; font-weight: 700;
@@ -438,17 +468,17 @@
 
 /* Stats strip */
 .landing-stats {
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center;
   gap: 0; background: var(--surface);
-  border: 1px solid var(--border-color); border-radius: 16px;
-  overflow: hidden; max-width: 640px; margin: 0 auto;
+  border: 1px solid var(--border-color); border-radius: 14px;
+  overflow: hidden; width: 100%;
 }
-.landing-stat { flex: 1; padding: 20px 16px; text-align: center; }
+.landing-stat { flex: 1; padding: 16px 12px; text-align: center; }
 .landing-stat-value {
-  display: block; font-family: var(--font-serif); font-size: 32px; font-weight: 300;
-  color: var(--brand); margin-bottom: 4px;
+  display: block; font-family: var(--font-serif); font-size: 26px; font-weight: 300;
+  color: var(--brand); margin-bottom: 3px;
 }
-.landing-stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.landing-stat-label { font-size: 11px; color: var(--text-muted); font-weight: 500; }
 .landing-stat-divider { width: 1px; align-self: stretch; background: var(--border-color); }
 
 /* Sections */
@@ -623,30 +653,35 @@
    ASTRA — Landing: 3-phone showcase
    ============================================================ */
 .landing-phones {
-  display: flex; align-items: flex-end; justify-content: center;
-  gap: 20px; padding: 40px 0 20px; flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 16px 0 8px;
+}
+@media (max-width: 700px) {
+  .landing-phones { grid-template-columns: 1fr; max-width: 300px; }
 }
 .landing-phone-wrap {
   display: flex; flex-direction: column; align-items: center; gap: 14px;
-  flex: 0 0 300px;
 }
+.landing-phone-center { position: relative; top: -16px; }
 .landing-phone-label {
-  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
   color: var(--brand); text-align: center;
 }
-.landing-phone-left  { transform: rotate(-3deg); transform-origin: bottom center; }
-.landing-phone-right { transform: rotate(3deg);  transform-origin: bottom center; }
-.landing-phone-center { z-index: 2; }
-
 .landing-phone {
-  width: 260px; border-radius: 32px;
+  width: 100%; max-width: 260px;
+  border-radius: 32px;
   background: var(--surface);
   border: 2px solid var(--border-color);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
   overflow: hidden;
 }
 .landing-phone-elevated {
-  box-shadow: 0 36px 80px rgba(107,92,231,0.22), 0 8px 24px rgba(0,0,0,0.16);
+  box-shadow: 0 20px 60px rgba(107,92,231,0.20), 0 4px 16px rgba(0,0,0,0.12);
   border-color: var(--brand);
 }
 .phone-status-bar {
@@ -656,7 +691,7 @@
 }
 .phone-screen {
   padding: 10px 14px 18px; background: var(--bg);
-  min-height: 420px; display: flex; flex-direction: column; gap: 10px;
+  display: flex; flex-direction: column; gap: 10px;
 }
 .phone-app-header {
   display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;
