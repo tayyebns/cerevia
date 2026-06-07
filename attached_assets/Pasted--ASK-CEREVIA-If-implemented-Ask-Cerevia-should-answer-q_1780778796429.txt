@@ -1,0 +1,375 @@
+
+ASK CEREVIA
+
+If implemented, Ask Cerevia should answer questions about the user’s own logged data.
+
+Example questions:
+
+* What are my strongest triggers?
+* What changed before my migraines got worse?
+* Does sleep seem linked to my migraines?
+* Which triggers should I focus on this week?
+* Has my medication helped reduce duration?
+* What should I discuss with my GP?
+
+Answers must be grounded in logged data and avoid diagnosis.
+
+Example:
+“Based on your logs, sleep appears to be your strongest associated trigger. Severe migraines were more common after nights with less than 6 hours sleep. This may be worth discussing with your GP if migraines are increasing.”
+
+REMINDERS SCREEN
+
+The current Reminders section should become trigger-management reminders.
+
+Not generic reminders.
+
+Types:
+
+* Sleep wind-down reminder
+* Hydration reminder
+* Meal consistency reminder
+* Screen break reminder
+* Stress reset reminder
+* Trigger check-in reminder
+* Medication reminder if user already takes migraine medication
+
+Each reminder should be linked to a trigger management goal.
+
+Example:
+“Screen break reminder is active because long screen sessions appear associated with your migraine reports.”
+
+DATA MODEL
+
+Use Supabase.
+
+Create or adapt tables around trigger management.
+
+Recommended tables:
+
+profiles
+
+* id
+* name
+* email
+* role
+* created_at
+
+patients
+
+* id
+* profile_id
+* date_of_birth
+* migraine_history
+* created_at
+
+trigger_checkins
+
+* id
+* patient_id
+* date
+* sleep_hours
+* sleep_quality
+* stress_level
+* hydration_level
+* meals_skipped
+* caffeine_intake
+* screen_time_hours
+* activity_level
+* weather_sensitivity
+* hormonal_related
+* notes
+* created_at
+
+migraine_events
+
+* id
+* patient_id
+* date
+* start_time
+* end_time
+* duration_hours
+* severity
+* pain_location
+* symptoms jsonb
+* medication_taken
+* medication_name
+* relief_level
+* time_to_relief
+* impact jsonb
+* notes
+* created_at
+
+trigger_insights
+
+* id
+* patient_id
+* trigger_name
+* confidence_score
+* association_strength
+* explanation
+* supporting_data jsonb
+* generated_at
+
+trigger_goals
+
+* id
+* patient_id
+* trigger_name
+* goal_type
+* target_value
+* current_value
+* status
+* created_at
+
+reminders
+
+* id
+* patient_id
+* reminder_type
+* linked_trigger
+* time
+* active
+* created_at
+
+gp_summaries
+
+* id
+* patient_id
+* date_range_start
+* date_range_end
+* summary_text
+* structured_output jsonb
+* created_at
+
+Optional:
+voice_notes
+wearable_events
+apple_watch_simulation
+
+SIMULATED APPLE WATCH / WEARABLES
+
+Use simulated wearable data only.
+
+Focus on:
+
+* Sleep
+* Activity
+* Heart rate
+
+Do not build real HealthKit unless already simple in current environment.
+
+Wearable data should support trigger intelligence.
+
+Example:
+“Sleep from Apple Watch simulation suggests Sarah averaged 5.8 hours this week, below her personal target of 7.5 hours.”
+
+AI / INSIGHT ENGINE
+
+For Replit, implement AI in a practical way.
+
+First use mock/static insight generation.
+Then add OpenAI API only if environment variables are available.
+
+Required AI functions:
+
+1. generateTriggerProfile(userData)
+   Returns ranked triggers and confidence scores.
+
+2. generateTriggerCoach(triggerProfile)
+   Returns personalised trigger management actions.
+
+3. generateGPSummary(userData)
+   Returns clinician-ready summary.
+
+4. answerAskCerevia(question, userData)
+   Returns grounded answer based on logs.
+
+5. structureVoiceNote(transcript)
+   Optional. Turns free text into trigger or migraine event data.
+
+MVP can use deterministic mock logic:
+
+* If sleep < 6h appears before multiple migraines, increase sleep trigger confidence.
+* If stress > 7 appears before multiple migraines, increase stress trigger confidence.
+* If meals_skipped is true before multiple migraines, increase skipped meals trigger confidence.
+* If caffeine is inconsistent before migraines, flag caffeine consistency.
+* If migraine frequency drops while trigger exposure improves, show progress.
+
+Do not overcomplicate with ML.
+
+Use clear rule-based calculations for the hackathon.
+
+EXAMPLE TRIGGER PROFILE OUTPUT
+
+{
+"primaryTrigger": "Poor Sleep",
+"confidence": 87,
+"explanation": "Severe migraines were more common after nights with less than 6 hours sleep.",
+"secondaryTriggers": [
+{
+"trigger": "High Stress",
+"confidence": 74
+},
+{
+"trigger": "Skipped Meals",
+"confidence": 61
+}
+],
+"managementFocus": "Improve sleep consistency this week."
+}
+
+SAMPLE DEMO PATIENT
+
+Use one seeded patient.
+
+Name:
+Sarah Ahmed
+
+Age:
+29
+
+Condition:
+Chronic migraine
+
+Medication:
+Sumatriptan
+
+Story:
+Sarah has experienced increasing migraines over the last 3 months. She suspects poor sleep and stress are involved but has never had clear evidence. Her migraines are starting to affect work and daily life. She uses Cerevia to track triggers, migraines and medication response. Cerevia identifies poor sleep and high stress as her strongest associated triggers, then creates a personalised trigger management plan.
+
+Seed data should include:
+
+* 60-90 days of trigger check-ins
+* 12-18 migraine events
+* Poor sleep before many severe migraines
+* High stress before several migraines
+* Some skipped meals
+* Medication use with mixed effectiveness
+* Work disruption
+* Improved final week after following sleep target
+
+DEMO FLOW
+
+1. Open Cerevia app.
+2. Home screen shows today’s trigger profile.
+3. User completes trigger check-in.
+4. User logs a migraine event.
+5. App updates trigger profile.
+6. Insights screen shows poor sleep as strongest trigger.
+7. Trigger Coach creates personalised sleep target.
+8. Reminders show sleep wind-down and meal consistency reminders.
+9. GP Summary shows migraine frequency, trigger profile, medication effectiveness and daily impact.
+10. End with the statement:
+    “Cerevia is not another migraine diary. It helps users understand and manage their personal triggers to reduce migraine frequency.”
+
+UI CHANGES TO CURRENT APP
+
+Keep current:
+
+* Typography
+* Rounded cards
+* Purple/lilac colour system
+* Calm medical aesthetic
+* Bottom navigation
+* Soft gradients
+* Minimal iconography
+* Premium feel
+
+Change product labels:
+
+* “Daily Care” becomes “Triggers” or “Trigger Care”
+* “Capture” becomes “Log”
+* “Symptoms” becomes “Migraine Event” or “Trigger Check-In”
+* “Adherence” becomes “Trigger Management”
+* “Recent Event” becomes “Recent Trigger Pattern”
+* “Reminders” becomes “Trigger Reminders” or “Care Plan”
+
+Replace generic symptom cards with:
+
+* Sleep
+* Stress
+* Hydration
+* Meals
+* Screen Time
+* Caffeine
+
+Replace pure migraine charts with:
+
+* Trigger Confidence
+* Trigger Exposure
+* Migraine Days
+* Severity Trend
+* Quality-of-Life Impact
+
+QUALITY BAR
+
+This should feel like a real product, not a form collection app.
+
+Every screen should answer one of these:
+
+* What are my triggers?
+* What should I focus on today?
+* Am I improving?
+* What should I do next?
+* What should I tell my GP?
+
+SAFETY DISCLAIMER
+
+Include somewhere in the app:
+
+“Cerevia does not diagnose, prescribe or provide medical advice. It helps organise self-reported migraine and trigger data to support personal management and clinical conversations. If symptoms are severe, sudden or unusual, seek urgent medical advice.”
+
+REPLIT IMPLEMENTATION INSTRUCTIONS
+
+Use a clean, maintainable structure.
+
+If this is a React/Vite app:
+
+* Use TypeScript if already configured.
+* Use existing components where possible.
+* Keep current CSS variables and theme tokens.
+* Do not rewrite the whole UI.
+* Refactor labels, flows and data models around trigger management.
+* Add mock data and mock insight functions first.
+* Make the app fully usable without external APIs.
+* Use environment variables for Supabase and OpenAI if implemented.
+* Build a clean fallback if APIs fail.
+
+If Supabase is not connected yet:
+
+* Use local mock data first.
+* Structure code so Supabase can be added later.
+* Keep data models realistic.
+
+Deliverables:
+
+1. Updated navigation
+2. Updated home dashboard
+3. Trigger check-in flow
+4. Migraine event logging flow
+5. Personal trigger intelligence page
+6. Trigger coach / management plan
+7. Trigger reminders
+8. GP summary page
+9. Seeded Sarah Ahmed demo data
+10. Safe clinical language throughout
+
+FINAL PRODUCT POSITIONING
+
+Cerevia is a personalised migraine trigger management platform.
+
+It helps users track potential triggers, discover their individual migraine patterns and take personalised actions to reduce trigger exposure.
+
+The product’s success is measured by:
+
+* Fewer migraine days
+* Lower severity
+* Reduced life disruption
+* Better trigger control
+* Better GP conversations
+
+Do not build a generic tracker.
+
+Build a product that helps migraine sufferers answer:
+
+“What is causing my migraines, what can I control, and what should I focus on today?”

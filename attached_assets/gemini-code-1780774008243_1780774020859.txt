@@ -1,0 +1,15 @@
+date,event_type,title,severity,duration_minutes,primary_pain_region,impact_score,description
+2026-06-01,migraine,Tension Headache,3,60,Forehead,2,Mild tightness after work.
+2026-06-05,migraine,Right-Sided Migraine,6,240,Right Temple,6,Aura and light sensitivity.
+2026-06-05,medication,Sumatriptan,0,0,N/A,0,Took 50mg, partial relief.
+2026-06-08,migraine,Behind-Eye Pain,7,300,Behind Right Eye,8,Nausea and aura.
+2026-06-08,medication,Sumatriptan,0,0,N/A,0,Took 50mg, no immediate relief.
+2026-06-12,migraine,Generalised Headache,4,120,Whole Head,3,Stress-related context.
+2026-06-15,migraine,Severe Migraine,8,400,Right Temple,9,Dizziness and light sensitivity.
+2026-06-15,medication,Sumatriptan,0,0,N/A,0,Took 100mg, required quiet dark room.
+2026-06-18,migraine,Neck Tension,3,90,Neck,2,Associated with poor sleep.
+2026-06-22,migraine,Migraine with Nausea,7,360,Behind Left Eye,8,Strong nausea, aura present.
+2026-06-22,medication,Sumatriptan,0,0,N/A,0,Took 100mg, slow relief.
+2026-06-25,migraine,Stress-induced Attack,6,240,Right Temple,7,High screen time and work stress.
+2026-06-28,migraine,Severe Attack,9,480,Behind Right Eye,10,Significant work impact, dizziness.
+2026-06-28,medication,Sumatriptan,0,0,N/A,0,Took 100mg, minimal effectiveness.

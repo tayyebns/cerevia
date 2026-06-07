@@ -1,0 +1,38 @@
+Task: Decouple Data Persistence from Demo Seeding
+We must eliminate the current hardcoded data injections that occur on every signup.
+
+1. The "Empty-First" Architecture:
+
+    Signup: When a user signs up, the profiles, patients, or gp_profiles rows must be created. Do not seed any migraine, medication, or trigger data. The dashboard must render a "No data found" or "Get Started" state by default.
+
+    Dynamic Seeding (The "Demo Mode"): On the Patient Dashboard, add a functional button: "Load Demo Data".
+
+    Demo Logic: When clicked, this button triggers a client-side function that populates the current authenticated user's patient_id with 12 weeks of historical migraine_events and medication_logs. This allows judges to instantly see the GP dashboard "light up" without breaking the integrity of a fresh account.
+
+2. Backend Data Hookup:
+
+    Replace all hardcoded UI mockups with dynamic Supabase queries using @supabase/ssr.
+
+    Ensure the dashboard components use useEffect or react-query to fetch real data from the current user's Supabase tables based on their unique user_id / patient_id.
+
+3. GP-Patient Linking Logic:
+
+    Implement the "Share with GP" component as discussed, ensuring the gp_access table is the source of truth for all data-linking permissions.
+
+    All GP-dashboard queries must implement a join or filter against the gp_access table.
+
+4. Deliverables for the Agent:
+
+    seedDemoData.ts: A utility function that performs an insert into migraine_events and medication_logs for the currently logged-in user.
+
+    Dashboard Data Hooks: Updated components that fetch data from Supabase, handling empty states gracefully when the user hasn't clicked "Load Demo Data" yet.
+
+    RLS Policy Verification: Ensure policies are set to auth.uid() = profile_id (for patients) or validated via gp_access (for GPs).
+
+Constraints:
+
+    Strictly no hardcoding of demo data on signup.
+
+    UI must distinguish between "empty state" (fresh user) and "populated state" (post-demo click).
+
+    Use clinical-safe language and include the mandatory safety disclaimer on all data-heavy views.

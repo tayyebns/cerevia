@@ -1,0 +1,6 @@
+- [Cerevia theme / FOUC](cerevia-theme-fouc.md) — dark-default no-flash theming (inline pre-paint script + storageKey); shared Navbar only on public routes.
+- [Cerevia route guards](cerevia-route-guards.md) — /patient* and /gp* gated by client-side AuthGuard; demo-mode carve-out when Supabase env absent.
+- [Cerevia Supabase RLS](cerevia-supabase-schema.md) — cross-table GP/patient access control MUST use SECURITY DEFINER helpers, never inline subqueries, to avoid 42P17 recursion.
+- [Cerevia AI chat integration](cerevia-ai-chat.md) — Express SSE route + React FAB; key wiring and medical guardrail decisions.
+- [Empty-first data architecture](empty-first-data.md) — signup creates rows only; seedDemoData.ts for demo. NOTE: patient app is now mock-first via demo store, not live Supabase fetch.
+- [Cerevia trigger engine](cerevia-trigger-engine.md) — patient app is mock-first (in-memory demo store, seeded "Sarah Ahmed"); "confidence" = co-occurrence calibrated to seed, not risk; keep teal not purple.
