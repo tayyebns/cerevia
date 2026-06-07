@@ -121,7 +121,7 @@ export default function Landing() {
         <div className="landing-problem-inner">
           <div className="landing-problem-label">The problem</div>
           <p className="landing-problem-body">
-            Health apps demand exhausting manual data entry from the very people who have the least energy to give. For neurodivergent minds battling cognitive overload, AstraBand completely removes the burden - silently observing your baseline and filtering out the noise to deliver only your highest-priority insights, zero effort required.
+            Most health apps demand the most from the people who have the least to give. Astra asks for nothing - and gives you back clarity.
           </p>
         </div>
       </section>
