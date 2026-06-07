@@ -57,7 +57,7 @@ export default function Today() {
   return (
     <div className="screen-today">
       <div className="today-date">{formatToday()}</div>
-      <h1 className="today-greeting">Good morning, Alex.</h1>
+      <h1 className="today-greeting">Good morning, Ahmad.</h1>
 
       {active ? (
         <>

@@ -37,7 +37,7 @@ export default function Landing() {
 
   function handleTryDemo() {
     loadDemoData()
-    navigate('/app')
+    navigate('/app/patterns')
   }
 
   return (

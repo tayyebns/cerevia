@@ -30,6 +30,7 @@ export default function App() {
               <Route path="/auth/login"      component={LoginPage} />
               <Route path="/auth/signup"     component={SignupPage} />
               <Route path="/auth/callback"   component={AuthCallback} />
+              <Route path="/app"             component={AppLayout} />
               <Route path="/app/:rest*"      component={AppLayout} />
               <Route>
                 <div style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)' }}>
