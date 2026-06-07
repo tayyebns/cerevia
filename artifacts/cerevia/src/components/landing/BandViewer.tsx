@@ -15,7 +15,7 @@ function BandModel() {
   })
 
   return (
-    <group ref={ref} scale={1.2} position={[0, -0.2, 0]}>
+    <group ref={ref} scale={2.0} position={[0, -0.2, 0]}>
       <primitive object={cloned} />
     </group>
   )
