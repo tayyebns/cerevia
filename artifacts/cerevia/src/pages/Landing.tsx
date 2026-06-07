@@ -1,21 +1,35 @@
+import { lazy, Suspense } from 'react'
 import { useLocation } from 'wouter'
 import { loadDemoData } from '@/lib/demo/store'
 
+const BandViewer = lazy(() => import('@/components/landing/BandViewer'))
+
+// Set to true once public/astraband.glb is placed in the public folder
+const HAS_GLB = false
+
 const FEATURES = [
-  { icon: '◎', label: 'Passive pattern detection', desc: 'No forms. No dashboards. Astra observes while you live.' },
-  { icon: '⌁', label: 'Personal baseline engine', desc: 'Learns what normal looks like for you — not a population average.' },
-  { icon: '↻', label: 'Recurrence detection', desc: 'Notices when the same cluster of changes has appeared before.' },
-  { icon: '⊞', label: 'Multi-signal interpretation', desc: 'Cross-references sleep, heart rate, HRV and activity together.' },
-  { icon: '⌘', label: 'Decision fatigue reduction', desc: 'One clear priority per day. Nothing else unless it matters.' },
+  { icon: '◎', label: 'Passive pattern detection',    desc: 'No forms. No dashboards. Astra observes while you live.' },
+  { icon: '⌁', label: 'Personal baseline engine',     desc: 'Learns what normal looks like for you — not a population average.' },
+  { icon: '↻', label: 'Recurrence detection',         desc: 'Notices when the same cluster of changes has appeared before.' },
+  { icon: '⊞', label: 'Multi-signal interpretation',  desc: 'Cross-references sleep, heart rate, HRV and activity together.' },
+  { icon: '⌘', label: 'Decision fatigue reduction',   desc: 'One clear priority per day. Nothing else unless it matters.' },
   { icon: '⊡', label: 'Clinician-ready health notes', desc: 'Optional export you own — never sent without your permission.' },
 ]
 
 const COMPARISONS = [
-  { label: 'Daily mandatory logs',       astra: '0',                   others: 'Many' },
-  { label: 'Manual tracking required',   astra: 'Never',               others: 'Always' },
-  { label: 'Clear health priority',      astra: '1 per day',           others: 'Dozens of charts' },
-  { label: 'Passive wearable (future)',  astra: 'AstraBand',           others: 'None' },
-  { label: 'Clinician export',           astra: 'Optional, user-owned', others: 'Not available' },
+  { label: 'Daily mandatory logs',      astra: '0',                    others: 'Many' },
+  { label: 'Manual tracking required',  astra: 'Never',                others: 'Always' },
+  { label: 'Clear health priority',     astra: '1 per day',            others: 'Dozens of charts' },
+  { label: 'Passive wearable',          astra: 'AstraBand',            others: 'None' },
+  { label: 'Clinician export',          astra: 'Optional, user-owned', others: 'Not available' },
+]
+
+const BAND_SPECS = [
+  { icon: '◉', label: 'Continuous skin temperature trend',   desc: 'Detects low-grade thermal shifts that precede fatigue or immune response — invisible to smartwatches.' },
+  { icon: '◉', label: 'Autonomic strain index',              desc: 'Real-time HRV + RHR combined to surface nervous system load — not just a number, a trend.' },
+  { icon: '◉', label: 'Movement deterioration tracking',     desc: 'Day-over-day gait and mobility pattern shifts that signal accumulating physical cost.' },
+  { icon: '◉', label: 'Sleep architecture context',          desc: '24/7 wear means full-night passive reading without a device that charges overnight.' },
+  { icon: '◉', label: 'Zero interaction required',           desc: 'No buttons. No notifications. No app checks. Wear it and forget it.' },
 ]
 
 export default function Landing() {
@@ -28,16 +42,22 @@ export default function Landing() {
 
   return (
     <div className="landing-root">
-      {/* Nav */}
+
+      {/* ── Nav ── */}
       <nav className="landing-nav">
         <span className="landing-logo">Astra</span>
         <div className="landing-nav-links">
-          <button className="landing-nav-link" onClick={handleTryDemo}>Try demo</button>
-          <a href="/auth/signup" className="landing-nav-cta">Get early access</a>
+          <button className="landing-nav-link" onClick={() => {
+            document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
+          }}>How it works</button>
+          <button className="landing-nav-link" onClick={() => {
+            document.getElementById('astraband')?.scrollIntoView({ behavior: 'smooth' })
+          }}>AstraBand</button>
+          <button className="landing-cta-demo" onClick={handleTryDemo}>Try demo →</button>
         </div>
       </nav>
 
-      {/* Hero */}
+      {/* ── Hero ── */}
       <section className="landing-hero">
         <div className="landing-hero-badge">Passive Health Pattern Intelligence</div>
         <h1 className="landing-h1">
@@ -51,9 +71,6 @@ export default function Landing() {
           <button className="landing-cta-primary" onClick={handleTryDemo}>
             Try the demo →
           </button>
-          <a href="/auth/signup" className="landing-cta-secondary">
-            Get early access
-          </a>
         </div>
 
         {/* Stats strip */}
@@ -69,13 +86,18 @@ export default function Landing() {
           </div>
           <div className="landing-stat-divider" />
           <div className="landing-stat">
-            <span className="landing-stat-value">Future</span>
-            <span className="landing-stat-label">AstraBand — our own passive wearable</span>
+            <span className="landing-stat-value">6</span>
+            <span className="landing-stat-label">passive signals tracked</span>
+          </div>
+          <div className="landing-stat-divider" />
+          <div className="landing-stat">
+            <span className="landing-stat-value">90</span>
+            <span className="landing-stat-label">days of health memory</span>
           </div>
         </div>
       </section>
 
-      {/* What Astra does */}
+      {/* ── Features ── */}
       <section className="landing-section">
         <h2 className="landing-section-title">Built around a different thesis</h2>
         <p className="landing-section-sub">
@@ -94,15 +116,16 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="landing-section landing-section-alt">
+      {/* ── How it works ── */}
+      <section id="how-it-works" className="landing-section landing-section-alt">
         <h2 className="landing-section-title">How it works</h2>
+        <p className="landing-section-sub">Four steps. Zero daily effort.</p>
         <div className="landing-steps">
           {[
-            { n: '01', title: 'Connect once',   body: 'Grant permission to Apple Health or Google Health Connect. Astra reads only what it needs and explains why each signal is used.' },
-            { n: '02', title: 'Astra observes', body: 'For 7–14 days Astra quietly builds your personal baseline — what normal looks like for you specifically, not a population.' },
-            { n: '03', title: 'Patterns surface', body: 'When a meaningful cluster of changes repeats, Astra explains it in plain language with one clear suggested next step.' },
-            { n: '04', title: 'You decide',     body: 'Dismiss it, note it, or generate a clinician-ready health summary. Everything is yours. Nothing is sent automatically.' },
+            { n: '01', title: 'Connect once',    body: 'Grant permission to Apple Health or Google Health Connect. Astra reads only what it needs and explains exactly why each signal is used.' },
+            { n: '02', title: 'Astra observes',  body: 'For 7–14 days Astra quietly builds your personal baseline — what normal looks like for you specifically, not for a population.' },
+            { n: '03', title: 'Patterns surface',body: 'When a meaningful cluster of changes repeats, Astra explains it in plain language with one clear suggested next step.' },
+            { n: '04', title: 'You decide',      body: 'Dismiss it, note it, or generate a clinician-ready health summary. Everything is yours. Nothing is sent automatically.' },
           ].map((s) => (
             <div key={s.n} className="landing-step">
               <span className="landing-step-n">{s.n}</span>
@@ -113,11 +136,17 @@ export default function Landing() {
             </div>
           ))}
         </div>
+        <div style={{ textAlign: 'center', marginTop: 40 }}>
+          <button className="landing-cta-primary" onClick={handleTryDemo}>
+            See it with 90 days of real-looking data →
+          </button>
+        </div>
       </section>
 
-      {/* Comparison */}
+      {/* ── Comparison ── */}
       <section className="landing-section">
         <h2 className="landing-section-title">What others skip</h2>
+        <p className="landing-section-sub">Most health apps mistake activity for insight.</p>
         <div className="landing-compare-table">
           <div className="landing-compare-header">
             <span />
@@ -134,41 +163,66 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* AstraBand */}
-      <section className="landing-section landing-band-section">
-        <div className="landing-band-card">
-          <div className="landing-band-left">
-            <div className="landing-band-badge">Coming soon</div>
+      {/* ── AstraBand ── */}
+      <section id="astraband" className="landing-band-full">
+        <div className="landing-band-full-inner">
+
+          {/* Left — copy */}
+          <div className="landing-band-copy">
+            <div className="landing-band-badge">In development</div>
             <h2 className="landing-band-title">AstraBand</h2>
             <p className="landing-band-body">
-              A passive health pattern band designed for continuous wear. Not a smartwatch. No notifications. No fitness scores. Just the signals that existing wearables miss — captured quietly, all day and night.
+              A passive health pattern band purpose-built for continuous wear. Not a smartwatch. No notifications. No fitness scores. Just the signals that existing wearables miss — captured quietly, all day and all night.
             </p>
-            <ul className="landing-band-bullets">
-              <li>Continuous skin temperature trend</li>
-              <li>Autonomic strain context</li>
-              <li>Movement deterioration tracking</li>
-              <li>Long battery life — designed for 24/7 wear</li>
-              <li>Zero interaction required</li>
-            </ul>
+            <p className="landing-band-body" style={{ marginBottom: 24 }}>
+              The software intelligence layer comes first. AstraBand captures the signals existing devices cannot — then feeds them into the same pattern engine you just saw in the demo.
+            </p>
+            <div className="landing-band-specs">
+              {BAND_SPECS.map((s) => (
+                <div key={s.label} className="landing-band-spec-row">
+                  <div className="landing-band-spec-top">
+                    <span className="landing-band-spec-dot">◉</span>
+                    <span className="landing-band-spec-label">{s.label}</span>
+                  </div>
+                  <p className="landing-band-spec-desc">{s.desc}</p>
+                </div>
+              ))}
+            </div>
             <p className="landing-band-note">
-              The software intelligence layer comes first. AstraBand captures the signals existing devices cannot.
+              AstraBand is currently in hardware prototyping. The intelligence layer it feeds runs today — connect any existing wearable to try the demo.
             </p>
           </div>
-          <div className="landing-band-visual">
-            <div className="landing-band-ring">
-              <div className="landing-band-ring-inner">
-                <span className="landing-band-ring-label">AstraBand</span>
-                <span className="landing-band-ring-sub">2026</span>
-              </div>
+
+          {/* Right — 3D viewer */}
+          <div className="landing-band-canvas-wrap">
+            <div className="landing-band-canvas">
+              <Suspense fallback={
+                <div className="landing-band-canvas-fallback">
+                  <div className="landing-band-ring">
+                    <div className="landing-band-ring-inner">
+                      <span className="landing-band-ring-label">AstraBand</span>
+                      <span className="landing-band-ring-sub">in development</span>
+                    </div>
+                  </div>
+                </div>
+              }>
+                <BandViewer hasGlb={HAS_GLB} />
+              </Suspense>
+            </div>
+            <div className="landing-band-canvas-caption">
+              {HAS_GLB ? 'AstraBand — drag to rotate' : 'AstraBand concept — 3D model loading soon'}
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* ── Final CTA ── */}
       <section className="landing-section landing-final-cta">
-        <h2 className="landing-final-title">Start understanding your patterns</h2>
-        <p className="landing-final-sub">No forms. No dashboards. Just what changed.</p>
+        <h2 className="landing-final-title">See 90 days of passive health intelligence</h2>
+        <p className="landing-final-sub">
+          No sign-up. No forms. Just what changed — in two minutes.
+        </p>
         <button className="landing-cta-primary landing-cta-large" onClick={handleTryDemo}>
           Try the demo now →
         </button>
@@ -181,6 +235,7 @@ export default function Landing() {
         <span className="landing-logo" style={{ fontSize: 14, opacity: 0.6 }}>Astra</span>
         <span className="landing-footer-note">Passive Health Pattern Intelligence · Not a medical device</span>
       </footer>
+
     </div>
   )
 }
