@@ -45,7 +45,7 @@ export default function Landing() {
 
       {/* Nav */}
       <nav className="landing-nav">
-        <span className="landing-logo">Astra</span>
+        <a href="/" className="landing-logo" style={{ textDecoration: 'none' }}>Astra</a>
         <div className="landing-nav-links">
           <button className="landing-nav-link" onClick={() => {
             document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
@@ -109,7 +109,7 @@ export default function Landing() {
                 </div>
               </div>
             }>
-              <BandViewer hasGlb={false} />
+              <BandViewer hasGlb={HAS_GLB} />
             </Suspense>
           </div>
           <div className="landing-hero-band-label">

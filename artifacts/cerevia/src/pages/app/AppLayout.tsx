@@ -30,7 +30,7 @@ export default function AppLayout() {
     <div className="app-shell">
       {/* Header */}
       <header className="app-header">
-        <span className="app-header-logo">Astra</span>
+        <a href="/" className="app-header-logo" style={{ textDecoration: 'none' }}>Astra</a>
         <div className="app-header-right">
           <a href="/" className="app-header-link">← Exit</a>
         </div>
