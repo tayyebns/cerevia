@@ -2,7 +2,9 @@ import { lazy, Suspense } from 'react'
 import { useLocation } from 'wouter'
 import { loadDemoData } from '@/lib/demo/store'
 
-const BandViewer = lazy(() => import('@/components/landing/BandViewer'))
+// Start downloading the Three.js chunk immediately — don't wait for Suspense to trigger
+const _bandViewerChunk = import('@/components/landing/BandViewer')
+const BandViewer = lazy(() => _bandViewerChunk)
 
 // Flip to true once public/astraband.glb is dropped in the public folder
 const HAS_GLB = true
@@ -164,6 +166,38 @@ export default function Landing() {
           <button className="landing-cta-primary" onClick={handleTryDemo}>
             See 90 days of Ahmad's patterns
           </button>
+        </div>
+      </section>
+
+      {/* Support tiers */}
+      <section className="landing-section">
+        <h2 className="landing-section-title">Choose your level of support</h2>
+        <p className="landing-section-sub">Every neurodivergent body is different. Pick what works for yours.</p>
+        <div className="landing-tiers">
+          <div className="landing-tier">
+            <div className="landing-tier-name">Minimal</div>
+            <div className="landing-tier-tagline">Only what matters</div>
+            <ul className="landing-tier-list">
+              <li>Important insights only</li>
+            </ul>
+          </div>
+          <div className="landing-tier landing-tier-featured">
+            <div className="landing-tier-popular">Most popular</div>
+            <div className="landing-tier-name">Balanced</div>
+            <div className="landing-tier-tagline">One clear thing per day</div>
+            <ul className="landing-tier-list">
+              <li>One insight per day</li>
+            </ul>
+          </div>
+          <div className="landing-tier">
+            <div className="landing-tier-name">High support</div>
+            <div className="landing-tier-tagline">Full guidance</div>
+            <ul className="landing-tier-list">
+              <li>Insights</li>
+              <li>Reminders</li>
+              <li>Routine support</li>
+            </ul>
+          </div>
         </div>
       </section>
 

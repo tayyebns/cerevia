@@ -3,13 +3,13 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, OrbitControls, Environment, Float } from '@react-three/drei'
 import * as THREE from 'three'
 
-const GLB_PATH = '/astraband_opt.glb'
+const GLB_PATH = '/astraband_fast.glb'
 
-// Start fetching the GLB as soon as this module loads - not on mount
-useGLTF.preload(GLB_PATH)
+// Preload GLB + decoder the moment this module is imported
+useGLTF.preload(GLB_PATH, false, true)
 
 function BandModel() {
-  const { scene } = useGLTF(GLB_PATH)
+  const { scene } = useGLTF(GLB_PATH, false, true)
   const cloned = useMemo(() => scene.clone(true), [scene])
   const ref = useRef<THREE.Group>(null)
 
