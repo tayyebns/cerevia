@@ -139,6 +139,10 @@
   --text:          #14141e;
   --text-muted:    #55556a;
   --text-subtle:   #9999aa;
+  /* aliases used by Patterns / app pages */
+  --card-bg:       #ffffff;
+  --text-primary:  #14141e;
+  --text-secondary:#3a3a52;
   --nav-bg:        rgba(244,244,248,0.92);
   --shadow:        0 2px 16px rgba(0,0,0,0.07);
   --brand:         #6b5ce7;
@@ -211,6 +215,10 @@
   --text:          #e8e8f5;
   --text-muted:    #8888a8;
   --text-subtle:   #55556e;
+  /* aliases used by Patterns / app pages */
+  --card-bg:       #14141f;
+  --text-primary:  #e8e8f5;
+  --text-secondary:#a8a8c8;
   --nav-bg:        rgba(13,13,20,0.92);
   --shadow:        0 4px 24px rgba(0,0,0,0.35);
   --brand:         #8b7cf8;
