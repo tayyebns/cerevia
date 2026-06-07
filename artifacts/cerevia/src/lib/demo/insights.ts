@@ -18,7 +18,7 @@ import { sarah } from './seed'
 // ---------------------------------------------------------------------------
 // Rule-based insight engine (no ML). Computes trigger associations, a
 // personalised coach plan, an outcome snapshot, a clinician-ready summary and
-// grounded Ask Cerevia answers — all from logged check-ins + migraine events.
+// grounded Ask Cerevia answers - all from logged check-ins + migraine events.
 // Deliberately deterministic and explainable for a clinically-responsible feel.
 // ---------------------------------------------------------------------------
 
@@ -181,7 +181,7 @@ function whatChangedInsight(checkins: TriggerCheckin[], migraines: MigraineEntry
     return `Your migraine frequency has eased recently (${mPrev} → ${mRecent} across the last two 30-day windows).`
   }
   if (mRecent > mPrev) {
-    return `Your migraine frequency has risen recently (${mPrev} → ${mRecent} across the last two 30-day windows) — a good moment to focus on your strongest trigger.`
+    return `Your migraine frequency has risen recently (${mPrev} → ${mRecent} across the last two 30-day windows) - a good moment to focus on your strongest trigger.`
   }
   return `Across the last 60 days your migraine frequency has stayed broadly steady (${mPrev} then ${mRecent} per 30-day window).`
 }
@@ -247,15 +247,15 @@ export function getProgress(profileKey: TriggerKey, checkins: TriggerCheckin[]):
   const bad = (arr: TriggerCheckin[]) => arr.filter((c) => triggerActive(profileKey, c)).length
   const thisBad = bad(thisWeek)
   const lastBad = bad(lastWeek)
-  if (lastBad === 0) return { pct: 0, label: `${TRIGGER_LABELS[profileKey]} stayed low this week — keep it up.` }
+  if (lastBad === 0) return { pct: 0, label: `${TRIGGER_LABELS[profileKey]} stayed low this week - keep it up.` }
   const reduction = Math.round(((lastBad - thisBad) / lastBad) * 100)
   if (reduction > 0) {
     return { pct: reduction, label: `${TRIGGER_LABELS[profileKey]} days reduced by ${reduction}% this week.` }
   }
   if (reduction < 0) {
-    return { pct: 0, label: `${TRIGGER_LABELS[profileKey]} days rose by ${Math.abs(reduction)}% this week — worth a closer look.` }
+    return { pct: 0, label: `${TRIGGER_LABELS[profileKey]} days rose by ${Math.abs(reduction)}% this week - worth a closer look.` }
   }
-  return { pct: 0, label: `${TRIGGER_LABELS[profileKey]} exposure is similar to last week — a good focus area.` }
+  return { pct: 0, label: `${TRIGGER_LABELS[profileKey]} exposure is similar to last week - a good focus area.` }
 }
 
 export function generateTriggerCoach(
@@ -371,7 +371,7 @@ export function generateGPSummary(
       avgSeverity,
       changeVsPrev,
       topTriggers: top.map((t) => ({ label: t.label, confidence: t.confidence })),
-      medication: `${sarah.medication} — logged in ${medEpisodes.length} episodes, moderate-to-strong relief in ${medRelief}.`,
+      medication: `${sarah.medication} - logged in ${medEpisodes.length} episodes, moderate-to-strong relief in ${medRelief}.`,
       qualityOfLife: `Reduced productivity on ${reducedProd} days; missed work ${missedWork === 1 ? 'once' : `${missedWork} times`}.`,
       mainConcern: sarah.mainConcern,
       discussionAreas: [
@@ -409,7 +409,7 @@ export function answerAskCerevia(
   if (q.includes('medication') || q.includes('sumatriptan') || q.includes('help')) {
     const med = migraines.filter((m) => m.medicationTaken)
     const relief = med.filter((m) => m.reliefLevel === 'moderate' || m.reliefLevel === 'strong').length
-    return `You logged medication during ${med.length} episodes, with moderate-to-strong relief reported in ${relief}. Relief looks mixed — this may be worth discussing with your GP. Cerevia does not make medication recommendations.`
+    return `You logged medication during ${med.length} episodes, with moderate-to-strong relief reported in ${relief}. Relief looks mixed - this may be worth discussing with your GP. Cerevia does not make medication recommendations.`
   }
   if (q.includes('gp') || q.includes('doctor') || q.includes('appointment')) {
     return `For your GP, the most useful points from your data are: ${snap.migraineDaysThisPeriod} migraine days in the last 30 days, an average severity of ${snap.avgSeverity}/10, and ${profile.primary.label.toLowerCase()} as your strongest associated trigger. You can generate a full summary from the Care tab.`
@@ -417,7 +417,7 @@ export function answerAskCerevia(
   return `Based on your logged data, your strongest associated trigger appears to be ${profile.primary.label.toLowerCase()} (${profile.primary.confidence}%). Ask me about your sleep, stress, medication, what changed, or what to focus on this week. Cerevia organises your data and does not provide diagnosis.`
 }
 
-// Simulated Apple Watch / wearable summary — sleep, heart rate and activity,
+// Simulated Apple Watch / wearable summary - sleep, heart rate and activity,
 // framed to support trigger intelligence (no diagnosis, no clinical claims).
 export function getWearableSummary(wearable: WearableDay[]): WearableSummary {
   const thisWeek = wearable.filter((w) => daysAgo(w.date) <= 7)
@@ -432,7 +432,7 @@ export function getWearableSummary(wearable: WearableDay[]): WearableSummary {
   const sleepMeetingTarget = avgSleepThisWeek >= target - 0.3
 
   const sleepNarrative = sleepMeetingTarget
-    ? `Apple Watch sleep suggests ${sarah.firstName} averaged ${avgSleepThisWeek}h this week — now meeting her ${target}h target, up from ${avgSleepPrev}h over the prior month.`
+    ? `Apple Watch sleep suggests ${sarah.firstName} averaged ${avgSleepThisWeek}h this week - now meeting her ${target}h target, up from ${avgSleepPrev}h over the prior month.`
     : `Apple Watch sleep suggests ${sarah.firstName} averaged ${avgSleepThisWeek}h this week, below her personal target of ${target}h. Protecting sleep is her strongest trigger-management lever.`
 
   const hrDelta = avgRestingHR - avgRestingHRPrev

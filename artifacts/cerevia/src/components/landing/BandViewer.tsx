@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 const GLB_PATH = '/astraband_opt.glb'
 
-// Start fetching the GLB as soon as this module loads — not on mount
+// Start fetching the GLB as soon as this module loads - not on mount
 useGLTF.preload(GLB_PATH)
 
 function BandModel() {

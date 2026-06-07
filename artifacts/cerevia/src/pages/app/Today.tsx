@@ -138,7 +138,7 @@ export default function Today() {
                   <div className="today-env-item-body">
                     <span className="today-env-item-label">Air quality</span>
                     <span className="today-env-item-value" style={{ color: aqiColor(todayEnv.aqi) }}>
-                      AQI {todayEnv.aqi} — {aqiLabel(todayEnv.aqi)}
+                      AQI {todayEnv.aqi} - {aqiLabel(todayEnv.aqi)}
                     </span>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ export default function Today() {
                   <div className="today-env-item-body">
                     <span className="today-env-item-label">Air quality</span>
                     <span className="today-env-item-value" style={{ color: aqiColor(todayEnv.aqi) }}>
-                      AQI {todayEnv.aqi} — {aqiLabel(todayEnv.aqi)}
+                      AQI {todayEnv.aqi} - {aqiLabel(todayEnv.aqi)}
                     </span>
                   </div>
                 </div>
@@ -270,7 +270,7 @@ export default function Today() {
         <div className="today-band-teaser-left">
           <span className="today-band-teaser-badge">Coming soon</span>
           <div className="today-band-teaser-name">AstraBand</div>
-          <div className="today-band-teaser-desc">Our own passive wearable — capturing environmental + body signals existing devices miss, all day and night.</div>
+          <div className="today-band-teaser-desc">Our own passive wearable - capturing environmental + body signals existing devices miss, all day and night.</div>
         </div>
         <div className="today-band-teaser-icon">◌</div>
       </div>

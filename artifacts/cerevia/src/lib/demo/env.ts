@@ -11,10 +11,10 @@ function mulberry32(seed: number) {
 }
 
 // Environmental data correlated with Ahmad's pattern windows:
-//   A (days 82–77 ago) — high pollen + dropping pressure → autonomic strain
-//   B (days 55–49 ago) — wildfire AQI spike 125+ + humidity 82%+ → fatigue crash
-//   C (days 22–17 ago) — cold front dropping fast + humidity spike → activity intolerance
-//   D (days 4–0 ago)   — same trigger as A: high pollen + dropping pressure (KEY demo moment)
+//   A (days 82–77 ago) - high pollen + dropping pressure → autonomic strain
+//   B (days 55–49 ago) - wildfire AQI spike 125+ + humidity 82%+ → fatigue crash
+//   C (days 22–17 ago) - cold front dropping fast + humidity spike → activity intolerance
+//   D (days 4–0 ago)   - same trigger as A: high pollen + dropping pressure (KEY demo moment)
 //
 // Environmental triggers lead body response by 1–2 days (lag visible in charts)
 export function generateEnvironmentalData(): EnvironmentalReading[] {
@@ -63,7 +63,7 @@ export function generateEnvironmentalData(): EnvironmentalReading[] {
       pollenLevel = daysAgo >= 18 && daysAgo <= 22 ? 'high' : 'moderate'
     }
 
-    // P4 window (days 4–0): Same as P1 — high pollen + dropping pressure
+    // P4 window (days 4–0): Same as P1 - high pollen + dropping pressure
     if (daysAgo >= 0 && daysAgo <= 6) {
       pollenLevel = daysAgo <= 4 ? 'very_high' : 'high'
       pressureTrend = daysAgo <= 3 ? 'dropping_fast' : 'falling'
@@ -138,7 +138,7 @@ export function humidityLabel(h: number): string {
   if (h < 40)  return 'Dry'
   if (h < 60)  return 'Comfortable'
   if (h < 75)  return 'Sticky'
-  return 'Heavy — harder to breathe'
+  return 'Heavy - harder to breathe'
 }
 
 export function humidityColor(h: number): string {

@@ -10,7 +10,7 @@ function mulberry32(seed: number) {
   }
 }
 
-// Ahmad — 34yo, chronic fatigue + mild asthma, Apple Watch user.
+// Ahmad - 34yo, chronic fatigue + mild asthma, Apple Watch user.
 // 90-day deterministic dataset. Index 0 = 89 days ago, index 89 = today.
 //
 // Pattern windows (days-ago from today):

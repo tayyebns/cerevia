@@ -72,8 +72,8 @@ export const medications = [
 export const aiSummary = `Maria's migraine frequency has decreased from 9 episodes in March to 8 in May, with a notable reduction in severity over the past two weeks (average 3.5 vs 6.8 the prior two weeks). No aura events have occurred since 14 May.
 
 Key concerns for this consultation:
-• Topiramate and Propranolol adherence are both around 75% — she reports difficulty remembering the evening dose
+• Topiramate and Propranolol adherence are both around 75% - she reports difficulty remembering the evening dose
 • Three high-severity episodes (7-8/10) clustered around 6 May coincided with a reported work deadline and the onset of her hormonal cycle, suggesting a menstrual migraine pattern
-• Sumatriptan has been used 6 times in the past 4 weeks — within guidelines but worth monitoring to avoid exceeding 10 treatment days per month, at which point medication overuse headache becomes a risk
+• Sumatriptan has been used 6 times in the past 4 weeks - within guidelines but worth monitoring to avoid exceeding 10 treatment days per month, at which point medication overuse headache becomes a risk
 
 Suggested discussion points: review evening dose adherence, explore whether a menstrual migraine prevention protocol is appropriate, consider referral for stress management support.`

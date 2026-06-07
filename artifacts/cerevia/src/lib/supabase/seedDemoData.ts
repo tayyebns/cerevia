@@ -88,7 +88,7 @@ const ACUTE_LOGS = [
   { date: '2026-06-28', medication_name: 'Sumatriptan 100mg', taken: true },
 ]
 
-// Preventive medications — daily schedule across the demo period
+// Preventive medications - daily schedule across the demo period
 const PREVENTIVE_MEDS = [
   { name: 'Topiramate 25mg',          slots: ['morning', 'evening'] },
   { name: 'Propranolol 40mg',         slots: ['morning', 'evening'] },

@@ -66,7 +66,7 @@ export default function Landing() {
             <span className="landing-h1-accent">Astra is the first to see them.</span>
           </h1>
           <p className="landing-hero-sub">
-            ADHD, autism, and other neurodivergent profiles make self-tracking almost impossible. Astra does it for you — no journaling, no check-ins, no apps to remember. Just one clear signal when something in your body has shifted.
+            ADHD, autism, and other neurodivergent profiles make self-tracking almost impossible. Astra does it for you - no journaling, no check-ins, no apps to remember. Just one clear signal when something in your body has shifted.
           </p>
           <div className="landing-hero-actions">
             <button className="landing-cta-primary" onClick={handleTryDemo}>
@@ -116,7 +116,7 @@ export default function Landing() {
         <div className="landing-problem-inner">
           <div className="landing-problem-label">The problem</div>
           <p className="landing-problem-body">
-            Health apps demand exhausting manual data entry from the very people who have the least energy to give. For neurodivergent minds battling cognitive overload, AstraBand completely removes the burden — silently observing your baseline and filtering out the noise to deliver only your highest-priority insights, zero effort required.
+            Health apps demand exhausting manual data entry from the very people who have the least energy to give. For neurodivergent minds battling cognitive overload, AstraBand completely removes the burden - silently observing your baseline and filtering out the noise to deliver only your highest-priority insights, zero effort required.
           </p>
         </div>
       </section>

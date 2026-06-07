@@ -59,7 +59,7 @@ SUGGESTED DISCUSSION AREAS
 
 • Recurring changes in resting heart rate and HRV during identified periods
 • Sleep disruption patterns and any associated low-energy days
-• Activity tolerance — any relationship between high-activity periods and recovery
+• Activity tolerance - any relationship between high-activity periods and recovery
 • Whether further monitoring or investigation is appropriate
 
 ────────────────────────────────

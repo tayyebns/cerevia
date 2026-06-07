@@ -216,7 +216,7 @@ export function BrainViewer({ events, selectedEvent }: Props) {
               Neural Impact Map
             </h2>
             <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 12, color: '#8ABFBA' }}>
-              3D brain — click a region or a timeline event to navigate
+              3D brain - click a region or a timeline event to navigate
             </p>
           </div>
         </div>
@@ -442,7 +442,7 @@ export function BrainViewer({ events, selectedEvent }: Props) {
               <div className="ml-auto flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full" style={{ background: BRAIN_REGIONS.find(r => r.annotationIdx === activeIdx)?.color ?? '#68B8AF' }} />
                 <span style={{ fontFamily: 'Nunito, sans-serif', fontSize: 12, color: BRAIN_REGIONS.find(r => r.annotationIdx === activeIdx)?.color ?? '#68B8AF' }}>
-                  {BRAIN_REGIONS.find(r => r.annotationIdx === activeIdx)?.name ?? '—'}
+                  {BRAIN_REGIONS.find(r => r.annotationIdx === activeIdx)?.name ?? '-'}
                 </span>
               </div>
             </div>

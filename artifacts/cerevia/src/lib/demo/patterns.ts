@@ -12,7 +12,7 @@ function monthAgo(n: number): string {
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
 }
 
-// Ahmad's 4 pattern events — matching seed.ts windows A/B/C/D
+// Ahmad's 4 pattern events - matching seed.ts windows A/B/C/D
 export function getDemoPatterns(): PatternEvent[] {
   return [
     {
@@ -44,7 +44,7 @@ export function getDemoPatterns(): PatternEvent[] {
       severity: 'high',
       title: 'Poor air quality triggered extreme fatigue',
       summary:
-        'Wildfire smoke pushed air quality into unhealthy levels for a week. Your daily steps and active minutes dropped sharply — your body conserved energy to protect your lungs.',
+        'Wildfire smoke pushed air quality into unhealthy levels for a week. Your daily steps and active minutes dropped sharply - your body conserved energy to protect your lungs.',
       supportingSignals: [
         { label: 'Daily steps',    change: '−4,500',   direction: 'down' },
         { label: 'Active minutes', change: '−35 mins',  direction: 'down' },
@@ -83,7 +83,7 @@ export function getDemoPatterns(): PatternEvent[] {
       durationDays: 5,
       severity: 'moderate',
       title: 'Astra caught the same pattern early',
-      summary: `The same combination of high pollen and falling pressure that caused your 6-day strain in ${monthAgo(82)} is happening again. Your heart rate is starting to climb — Astra noticed before you felt it.`,
+      summary: `The same combination of high pollen and falling pressure that caused your 6-day strain in ${monthAgo(82)} is happening again. Your heart rate is starting to climb - Astra noticed before you felt it.`,
       supportingSignals: [
         { label: 'Resting heart rate',     change: '+6 bpm',    direction: 'up' },
         { label: 'Heart rate variability', change: '−10 ms',    direction: 'down' },

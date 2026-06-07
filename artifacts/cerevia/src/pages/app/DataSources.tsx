@@ -4,9 +4,9 @@ const SIGNAL_EXPLANATIONS: Record<string, string> = {
   'Sleep duration':     'Used to detect sleep disruption patterns and compare against your personal baseline.',
   'Resting HR':         'Key signal for recovery strain detection. Elevated RHR across multiple days contributes to pattern clustering.',
   'HRV':               'Heart rate variability suppression combined with RHR elevation is a strong recovery strain indicator.',
-  'Steps':             'Used to detect reduced movement patterns and activity intolerance — days of unusually low activity relative to your baseline.',
+  'Steps':             'Used to detect reduced movement patterns and activity intolerance - days of unusually low activity relative to your baseline.',
   'Active minutes':    'Supports activity intolerance detection alongside daily steps.',
-  'Screen time':       'Optional — used only to provide context for sleep disruption patterns. Never used for any other purpose.',
+  'Screen time':       'Optional - used only to provide context for sleep disruption patterns. Never used for any other purpose.',
 }
 
 function formatDate(iso: string) {
@@ -28,11 +28,11 @@ export default function DataSources() {
         <div className="sources-principles-title">Data principles</div>
         <div className="sources-principle-list">
           {[
-            { icon: '◉', text: 'Explicit consent for every signal — no silent collection.' },
+            { icon: '◉', text: 'Explicit consent for every signal - no silent collection.' },
             { icon: '◉', text: 'Each signal has a clear, explained purpose in the product.' },
             { icon: '◉', text: 'You can disconnect any source or delete all data at any time.' },
             { icon: '◉', text: 'Your data is never sold, shared with employers, or sent anywhere without your explicit action.' },
-            { icon: '◉', text: 'Health notes are only generated when you initiate them — nothing is auto-sent.' },
+            { icon: '◉', text: 'Health notes are only generated when you initiate them - nothing is auto-sent.' },
           ].map((p) => (
             <div key={p.text} className="sources-principle-row">
               <span className="sources-principle-icon">{p.icon}</span>
@@ -101,10 +101,10 @@ export default function DataSources() {
       <div className="sources-delete">
         <div className="sources-delete-title">Delete all data</div>
         <p className="sources-delete-body">
-          You can request complete deletion of all your data — readings, baseline calculations, patterns and any health notes — at any time. In the live product, deletion is immediate and irreversible.
+          You can request complete deletion of all your data - readings, baseline calculations, patterns and any health notes - at any time. In the live product, deletion is immediate and irreversible.
         </p>
         <button className="sources-delete-btn" disabled>
-          Delete all my data (demo — disabled)
+          Delete all my data (demo - disabled)
         </button>
       </div>
 

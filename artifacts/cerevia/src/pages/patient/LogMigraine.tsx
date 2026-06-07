@@ -319,7 +319,7 @@ export default function LogMigraine() {
                   {saved ? <><CheckCircle2 className="w-5 h-5" strokeWidth={2} /> Saved</> : saving ? 'Saving…' : 'Save migraine event'}
                 </button>
                 <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 11, color: 'var(--text-subtle)', textAlign: 'center', marginTop: 8, lineHeight: 1.4 }}>
-                  This organises your self-reported data — it is not a substitute for medical advice.
+                  This organises your self-reported data - it is not a substitute for medical advice.
                 </p>
               </div>
             </motion.div>

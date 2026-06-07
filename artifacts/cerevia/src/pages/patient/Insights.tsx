@@ -85,11 +85,11 @@ export default function Insights() {
           ))}
         </div>
         <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 11, color: 'var(--text-subtle)', marginTop: 12, lineHeight: 1.5 }}>
-          These reflect patterns in your logged data — they are not medical certainty.
+          These reflect patterns in your logged data - they are not medical certainty.
         </p>
       </Section>
 
-      {/* Simulated Apple Watch — supports trigger intelligence */}
+      {/* Simulated Apple Watch - supports trigger intelligence */}
       <WearableCard summary={wearableSummary} delay={0.04} />
 
       {/* Pattern Explanation */}

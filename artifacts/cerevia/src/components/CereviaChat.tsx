@@ -66,7 +66,7 @@ async function fetchPatientContext(role: 'patient' | 'gp'): Promise<PatientConte
 
 /**
  * Safely renders a single line of text with **bold** markdown support.
- * No dangerouslySetInnerHTML — all content is rendered as React nodes.
+ * No dangerouslySetInnerHTML - all content is rendered as React nodes.
  */
 function SafeLine({ text, color }: { text: string; color: string }) {
   if (!text.trim()) return <p style={{ margin: 0 }}>&nbsp;</p>
@@ -203,7 +203,7 @@ export function CereviaChat({ role }: Props) {
       const name = role === 'gp' ? (ctx.linkedPatientName ?? 'your patient') : (ctx.patientName?.split(' ')[0] ?? 'there')
       const intro = role === 'gp'
         ? ctx.events && ctx.events.length > 0
-          ? `I've loaded ${name}'s data — ${ctx.events.length} migraine episodes logged. Average severity: ${(ctx.events.reduce((s, e) => s + e.severity, 0) / ctx.events.length).toFixed(1)}/10. What would you like to explore before the consultation?`
+          ? `I've loaded ${name}'s data - ${ctx.events.length} migraine episodes logged. Average severity: ${(ctx.events.reduce((s, e) => s + e.severity, 0) / ctx.events.length).toFixed(1)}/10. What would you like to explore before the consultation?`
           : `${name} hasn't logged any episodes yet. I can help you prepare consultation questions or discuss general migraine patterns.`
         : ctx.events && ctx.events.length > 0
           ? `Hi ${name}! I can see you've logged ${ctx.events.length} migraine episodes. What would you like to understand about your patterns?`
@@ -261,7 +261,7 @@ export function CereviaChat({ role }: Props) {
       let aiText = ''
       let msgAdded = false
       // Buffer carries over any incomplete SSE line between network chunks.
-      // HTTP chunk boundaries are arbitrary — a data: JSON line can be split
+      // HTTP chunk boundaries are arbitrary - a data: JSON line can be split
       // across two reads. We only parse lines we know are complete (i.e. they
       // ended with \n), and defer the remainder to the next iteration.
       let buffer = ''
@@ -291,7 +291,7 @@ export function CereviaChat({ role }: Props) {
             applyContent(aiText, aiText.includes('🚨'))
           }
         } catch {
-          // genuinely malformed — skip
+          // genuinely malformed - skip
         }
       }
 
@@ -300,7 +300,7 @@ export function CereviaChat({ role }: Props) {
         if (done) break
         buffer += decoder.decode(value, { stream: true })
         const lines = buffer.split('\n')
-        // The last element may be an incomplete line — put it back in the buffer
+        // The last element may be an incomplete line - put it back in the buffer
         buffer = lines.pop() ?? ''
         for (const line of lines) processLine(line)
       }

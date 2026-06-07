@@ -77,8 +77,8 @@ export default function Baseline() {
   const signals: SignalRowProps[] = latest
     ? [
         { label: 'Sleep duration',   unit: 'h',    baseline: baseline.sleepDuration,   currentValue: latest.sleepDuration,   higherIsBetter: true,  description: 'Hours of sleep measured by your device' },
-        { label: 'Resting heart rate', unit: ' bpm', baseline: baseline.restingHR,     currentValue: latest.restingHR,       higherIsBetter: false, description: 'Resting HR on waking — lower typically means better recovery' },
-        { label: 'HRV',              unit: ' ms',  baseline: baseline.hrv,             currentValue: latest.hrv,             higherIsBetter: true,  description: 'Heart rate variability — higher values generally reflect better recovery' },
+        { label: 'Resting heart rate', unit: ' bpm', baseline: baseline.restingHR,     currentValue: latest.restingHR,       higherIsBetter: false, description: 'Resting HR on waking - lower typically means better recovery' },
+        { label: 'HRV',              unit: ' ms',  baseline: baseline.hrv,             currentValue: latest.hrv,             higherIsBetter: true,  description: 'Heart rate variability - higher values generally reflect better recovery' },
         { label: 'Daily steps',      unit: '',     baseline: baseline.steps,           currentValue: latest.steps,           higherIsBetter: true,  description: 'Total steps from phone and wearable' },
         { label: 'Active minutes',   unit: ' min', baseline: baseline.activeMinutes,   currentValue: latest.activeMinutes,   higherIsBetter: true,  description: 'Minutes of elevated movement' },
         { label: 'Screen time',      unit: 'h',    baseline: baseline.screenTimeHours, currentValue: latest.screenTimeHours, higherIsBetter: false, description: 'Late-night screen time may contribute to sleep disruption' },
@@ -91,7 +91,7 @@ export default function Baseline() {
     <div className="screen-baseline">
       <h1 className="screen-title">Your Baseline</h1>
       <p className="screen-subtitle">
-        What normal looks like for you — calculated from your last {baseline.windowDays} days of data, not a population average.
+        What normal looks like for you - calculated from your last {baseline.windowDays} days of data, not a population average.
       </p>
 
       {/* Summary */}
@@ -120,10 +120,10 @@ export default function Baseline() {
       <div className="baseline-how">
         <div className="baseline-how-title">How your baseline is calculated</div>
         <p className="baseline-how-body">
-          Astra uses a rolling 30-day window of your stable data to establish your personal normal range for each signal. The range shows where your values typically fall. Current values are compared against this — not against population averages or general guidelines.
+          Astra uses a rolling 30-day window of your stable data to establish your personal normal range for each signal. The range shows where your values typically fall. Current values are compared against this - not against population averages or general guidelines.
         </p>
         <p className="baseline-how-body">
-          As more data is collected, the baseline becomes more accurate. Patterns are only surfaced when deviations are meaningful, repeated and cross multiple signals — not from single-day changes.
+          As more data is collected, the baseline becomes more accurate. Patterns are only surfaced when deviations are meaningful, repeated and cross multiple signals - not from single-day changes.
         </p>
       </div>
 

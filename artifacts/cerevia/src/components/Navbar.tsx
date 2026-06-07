@@ -6,7 +6,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
  * Shared, persistent top navigation used across the public-facing routes
  * (Landing, auth). Centralises the Cerevia wordmark (Cormorant Garamond +
  * teal #68B8AF) and the light/dark pill toggle so theme switching is
- * consistent everywhere. Pass page-specific actions via `children` — they are
+ * consistent everywhere. Pass page-specific actions via `children` - they are
  * rendered to the left of the toggle.
  */
 export function Navbar({ children }: { children?: React.ReactNode }) {

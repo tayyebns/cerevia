@@ -68,7 +68,7 @@
 }
 
 /* ============================================================
-   ASTRA — Design tokens (dark-first, brand colour TBD)
+   ASTRA - Design tokens (dark-first, brand colour TBD)
    ============================================================ */
 :root {
   --button-outline: rgba(0,0,0,.10);
@@ -163,7 +163,7 @@
 }
 
 /* ============================================================
-   ASTRA — Dark mode
+   ASTRA - Dark mode
    ============================================================ */
 .dark {
   --button-outline: rgba(255,255,255,.10);
@@ -349,7 +349,7 @@
 }
 
 /* ============================================================
-   ASTRA — Global keyframes
+   ASTRA - Global keyframes
    ============================================================ */
 @keyframes spin {
   to { transform: rotate(360deg); }
@@ -360,7 +360,7 @@
 }
 
 /* ============================================================
-   ASTRA — Landing page
+   ASTRA - Landing page
    ============================================================ */
 .landing-root {
   min-height: 100svh;
@@ -602,7 +602,7 @@
   font-size: 14px; color: var(--text); padding: 5px 0;
   display: flex; align-items: center; gap: 10px;
 }
-.landing-band-bullets li::before { content: '—'; color: var(--brand); font-weight: 700; }
+.landing-band-bullets li::before { content: '-'; color: var(--brand); font-weight: 700; }
 .landing-band-note { font-size: 13px; color: var(--text-subtle); font-style: italic; }
 .landing-band-visual { display: flex; justify-content: center; align-items: center; flex: 0 0 200px; }
 .landing-band-ring {
@@ -619,7 +619,7 @@
 }
 .landing-band-ring-sub { font-size: 12px; color: var(--text-muted); }
 
-/* AstraBand — full-bleed section with 3D viewer */
+/* AstraBand - full-bleed section with 3D viewer */
 .landing-band-full {
   background: var(--bg);
   border-top: 1px solid var(--border-color);
@@ -689,7 +689,7 @@
 .landing-footer-note { font-size: 12px; color: var(--text-subtle); }
 
 /* ============================================================
-   ASTRA — Landing: 3-phone showcase
+   ASTRA - Landing: 3-phone showcase
    ============================================================ */
 .landing-phones {
   display: grid;
@@ -747,7 +747,7 @@
 .phone-greeting { font-family: var(--font-serif); font-size: 16px; font-weight: 400; color: var(--text); margin-bottom: 4px; }
 .phone-section-title { font-family: var(--font-serif); font-size: 16px; font-weight: 400; color: var(--text); margin-bottom: 8px; }
 
-/* Phone — pattern card */
+/* Phone - pattern card */
 .phone-pattern-card {
   background: var(--surface); border: 1px solid var(--border-color);
   border-radius: 12px; padding: 12px;
@@ -767,7 +767,7 @@
 .phone-signal-ok  { color: var(--positive); }
 .phone-recurrence-note { font-size: 11px; color: var(--brand); font-weight: 600; }
 
-/* Phone — env strip */
+/* Phone - env strip */
 .phone-env-strip {
   background: var(--surface); border: 1px solid var(--border-color);
   border-radius: 10px; padding: 10px;
@@ -782,7 +782,7 @@
   background: var(--warning-bg); padding: 4px 10px; border-radius: 6px; text-align: center;
 }
 
-/* Phone — timeline */
+/* Phone - timeline */
 .phone-timeline { display: flex; flex-direction: column; margin-bottom: 10px; }
 .phone-tl-row { display: flex; gap: 10px; }
 .phone-tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 14px; }
@@ -798,7 +798,7 @@
 .phone-tl-sub   { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
 .phone-tl-flagged { color: var(--brand); }
 
-/* Phone — insight box */
+/* Phone - insight box */
 .phone-insight-box {
   background: var(--brand-light); border-radius: 10px; padding: 10px;
 }
@@ -806,7 +806,7 @@
 .phone-insight-text  { font-size: 11px; color: var(--text); line-height: 1.55; margin: 0; }
 .phone-insight-text strong { color: var(--brand); }
 
-/* Phone — action screen */
+/* Phone - action screen */
 .phone-action-hero {
   background: var(--surface); border: 1px solid var(--border-color);
   border-radius: 12px; padding: 14px; text-align: center; margin-bottom: 10px;
@@ -830,7 +830,7 @@
 .phone-safety-note { font-size: 10px; color: var(--text-subtle); text-align: center; margin: 0; }
 
 /* ============================================================
-   ASTRA — App shell
+   ASTRA - App shell
    ============================================================ */
 .app-shell {
   display: flex; flex-direction: column;
@@ -905,7 +905,7 @@
 }
 
 /* ============================================================
-   ASTRA — Today screen
+   ASTRA - Today screen
    ============================================================ */
 .today-date { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
 .today-greeting {
@@ -1063,7 +1063,7 @@
 .today-band-teaser-icon { font-size: 40px; color: var(--brand); opacity: 0.3; flex-shrink: 0; }
 
 /* ============================================================
-   ASTRA — Patterns screen
+   ASTRA - Patterns screen
    ============================================================ */
 .patterns-what-changed {
   background: var(--surface); border: 1px solid var(--border-color);
@@ -1126,7 +1126,7 @@
 .patterns-category-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
 
 /* ============================================================
-   ASTRA — Baseline screen
+   ASTRA - Baseline screen
    ============================================================ */
 .baseline-summary {
   display: flex; gap: 0; background: var(--surface);
@@ -1186,7 +1186,7 @@
 .baseline-how-body:last-child { margin-bottom: 0; }
 
 /* ============================================================
-   ASTRA — Health Note screen
+   ASTRA - Health Note screen
    ============================================================ */
 .note-period {
   display: flex; align-items: center; justify-content: space-between;
@@ -1280,7 +1280,7 @@
 }
 
 /* ============================================================
-   ASTRA — Data Sources screen
+   ASTRA - Data Sources screen
    ============================================================ */
 .sources-principles {
   background: var(--surface); border: 1px solid var(--border-color);
@@ -1344,7 +1344,7 @@
 }
 
 /* ============================================================
-   ASTRA — Landing animations & premium polish
+   ASTRA - Landing animations & premium polish
    ============================================================ */
 
 /* Floating background orbs */
@@ -1479,7 +1479,7 @@
   cursor: default;
 }
 
-/* Stat values — subtle glow */
+/* Stat values - subtle glow */
 .landing-stat-value {
   text-shadow: 0 0 20px rgba(107,92,231,0.3);
 }
@@ -1493,7 +1493,7 @@
   text-shadow: 0 0 24px rgba(107,92,231,0.6);
 }
 
-/* Comparison table — row highlight on hover */
+/* Comparison table - row highlight on hover */
 .landing-compare-row {
   transition: background 0.2s ease;
 }
@@ -1501,7 +1501,7 @@
   background: var(--brand-light);
 }
 
-/* Phone elevated center — enhance glow */
+/* Phone elevated center - enhance glow */
 .landing-phone-elevated {
   box-shadow:
     0 0 0 1.5px var(--brand),
@@ -1509,7 +1509,7 @@
     0 4px 16px rgba(0,0,0,0.12);
 }
 
-/* Band spec rows — hover accent */
+/* Band spec rows - hover accent */
 .landing-band-spec-row {
   transition: border-color 0.2s ease, padding-left 0.2s ease;
 }

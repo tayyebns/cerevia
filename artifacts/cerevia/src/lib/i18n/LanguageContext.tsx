@@ -51,7 +51,7 @@ export async function myMemoryTranslate(text: string, targetLang: string): Promi
       return translated
     }
   } catch {
-    // network error — return original
+    // network error - return original
   }
   return text
 }

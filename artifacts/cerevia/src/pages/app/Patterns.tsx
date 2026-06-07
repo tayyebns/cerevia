@@ -272,7 +272,7 @@ export default function Patterns() {
       </motion.div>
 
       <p style={{ fontSize: 11, color: 'var(--text-muted)', opacity: 0.45, textAlign: 'center', lineHeight: 1.5, marginTop: 16 }}>
-        Based on Ahmad's personal baseline. For awareness only — not a diagnosis or medical advice.
+        Based on Ahmad's personal baseline. For awareness only - not a diagnosis or medical advice.
       </p>
 
     </div>

@@ -4,7 +4,7 @@ import type { WearableSummary } from '@/lib/demo/types'
 
 // Simulated Apple Watch card. Surfaces device-measured sleep, resting heart
 // rate and activity, and ties them back to trigger management. Purely
-// illustrative — labelled "simulated" so it is never mistaken for real data.
+// illustrative - labelled "simulated" so it is never mistaken for real data.
 export function WearableCard({
   summary,
   delay = 0,

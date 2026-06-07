@@ -96,7 +96,7 @@ export default function TriggerCheckIn() {
       </Card>
 
       <Card icon={Coffee} color="#8B6F47">
-        <Slider label="Caffeine (cups)" value={caffeineIntake} min={0} max={6} step={1} onChange={setCaffeineIntake} hint="Big changes either way can matter — consistency helps." />
+        <Slider label="Caffeine (cups)" value={caffeineIntake} min={0} max={6} step={1} onChange={setCaffeineIntake} hint="Big changes either way can matter - consistency helps." />
       </Card>
 
       <Card icon={MonitorSmartphone} color="#6B7CC4">
@@ -127,7 +127,7 @@ export default function TriggerCheckIn() {
       <button onClick={handleSave} disabled={saved}
         className="w-full flex items-center justify-center gap-2 rounded-[999px] h-14 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
         style={{ background: 'linear-gradient(135deg, #68B8AF, #4A9990)', boxShadow: '0 4px 16px rgba(104,184,175,0.4)', fontFamily: 'Nunito, sans-serif', fontSize: 16, border: 'none', cursor: saved ? 'default' : 'pointer' }}>
-        {saved ? <><CheckCircle2 className="w-5 h-5" strokeWidth={2} /> Saved — updating your profile…</> : "Save today's check-in"}
+        {saved ? <><CheckCircle2 className="w-5 h-5" strokeWidth={2} /> Saved - updating your profile…</> : "Save today's check-in"}
       </button>
 
       <AnimatePresence>
@@ -143,7 +143,7 @@ export default function TriggerCheckIn() {
       </AnimatePresence>
 
       <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 11, color: 'var(--text-subtle)', textAlign: 'center', lineHeight: 1.5 }}>
-        Your check-ins build a personal trigger pattern over time — they are not a medical assessment.
+        Your check-ins build a personal trigger pattern over time - they are not a medical assessment.
       </p>
     </div>
   )

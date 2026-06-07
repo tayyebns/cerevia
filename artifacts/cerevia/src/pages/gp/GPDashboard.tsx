@@ -230,7 +230,7 @@ export default function GPDashboard() {
   const events = dashData?.events ?? []
   const logs = dashData?.logs ?? []
   const patientName = selectedPatient?.full_name ?? 'Patient'
-  const avgSeverity = events.length > 0 ? (events.reduce((s, e) => s + e.severity, 0) / events.length).toFixed(1) : '—'
+  const avgSeverity = events.length > 0 ? (events.reduce((s, e) => s + e.severity, 0) / events.length).toFixed(1) : '-'
   const avgDuration = events.length > 0 ? Math.round(events.reduce((s, e) => s + (e.duration ?? 0), 0) / events.length) : 0
   const frequencyData = buildFrequencyData(events)
   const severityTrend = buildSeverityTrend(events)
@@ -301,10 +301,10 @@ export default function GPDashboard() {
             </DarkCard>
 
             <div className="grid grid-cols-2 gap-4 flex-1">
-              <StatPill label="Episodes total" value={events.length > 0 ? String(events.length) : '—'} sub="logged" />
+              <StatPill label="Episodes total" value={events.length > 0 ? String(events.length) : '-'} sub="logged" />
               <StatPill label="Avg severity" value={avgSeverity} sub="/ 10" trend={events.length > 1 ? 'down' : undefined} />
-              <StatPill label="Avg duration" value={avgDuration > 0 ? `${avgDuration}h` : '—'} sub="per episode" />
-              <StatPill label="Aura events" value={events.length > 0 ? String(events.filter(e => e.aura).length) : '—'} />
+              <StatPill label="Avg duration" value={avgDuration > 0 ? `${avgDuration}h` : '-'} sub="per episode" />
+              <StatPill label="Aura events" value={events.length > 0 ? String(events.filter(e => e.aura).length) : '-'} />
             </div>
 
             {linkedPatients.length === 1 && (

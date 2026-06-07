@@ -71,7 +71,7 @@ function EmptyHome({ firstName, onLoadDemo, loading }: { firstName: string | nul
           See how Cerevia works with a demo patient profile
         </p>
         <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 13, color: '#8ABFBA', marginBottom: 20, lineHeight: 1.5 }}>
-          Loads 75 days of realistic migraine history, trigger patterns, and insights. No data is sent anywhere — it's local only.
+          Loads 75 days of realistic migraine history, trigger patterns, and insights. No data is sent anywhere - it's local only.
         </p>
         <button
           onClick={onLoadDemo}
