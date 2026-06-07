@@ -10,13 +10,13 @@ function mulberry32(seed: number) {
   }
 }
 
-// Environmental data correlated with pattern windows:
-//   P1 (days 82–77 ago) — high pollen + dropping pressure (spring front)
-//   P2 (days 55–49 ago) — AQI spike + heat wave (summer pollution)
-//   P3 (days 22–17 ago) — cold front + humidity spike
-//   P4 (days 4–0 ago)   — high pollen + dropping pressure (same trigger as P1)
+// Environmental data correlated with Ahmad's pattern windows:
+//   A (days 82–77 ago) — high pollen + dropping pressure → autonomic strain
+//   B (days 55–49 ago) — wildfire AQI spike 125+ + humidity 82%+ → fatigue crash
+//   C (days 22–17 ago) — cold front dropping fast + humidity spike → activity intolerance
+//   D (days 4–0 ago)   — same trigger as A: high pollen + dropping pressure (KEY demo moment)
 //
-// The P1/P4 match is the key demo insight: same environmental combination → same body response
+// Environmental triggers lead body response by 1–2 days (lag visible in charts)
 export function generateEnvironmentalData(): EnvironmentalReading[] {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
@@ -120,11 +120,31 @@ export const PRESSURE_LABELS: Record<PressureTrend, string> = {
 }
 
 export function aqiLabel(aqi: number): string {
-  if (aqi <= 50)  return 'Good'
-  if (aqi <= 100) return 'Moderate'
-  if (aqi <= 150) return 'Unhealthy — sensitive groups'
-  if (aqi <= 200) return 'Unhealthy'
-  return 'Very Unhealthy'
+  if (aqi <= 50)  return 'Air is clean'
+  if (aqi <= 100) return 'Acceptable'
+  if (aqi <= 150) return 'Limit time outside'
+  if (aqi <= 200) return 'Stay indoors'
+  return 'Very unhealthy'
+}
+
+export function aqiColor(aqi: number): string {
+  if (aqi <= 50)  return '#22c55e'
+  if (aqi <= 100) return '#f59e0b'
+  if (aqi <= 150) return '#f97316'
+  return '#ef4444'
+}
+
+export function humidityLabel(h: number): string {
+  if (h < 40)  return 'Dry'
+  if (h < 60)  return 'Comfortable'
+  if (h < 75)  return 'Sticky'
+  return 'Heavy — harder to breathe'
+}
+
+export function humidityColor(h: number): string {
+  if (h < 60)  return '#22c55e'
+  if (h < 75)  return '#f59e0b'
+  return '#ef4444'
 }
 
 export function envPatternTrigger(

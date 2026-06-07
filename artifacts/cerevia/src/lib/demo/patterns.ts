@@ -6,91 +6,94 @@ function daysAgoIso(n: number): string {
   return d.toISOString().split('T')[0]
 }
 
-// Pre-defined pattern events matching the seeded wearable data
+function monthAgo(n: number): string {
+  const d = new Date()
+  d.setDate(d.getDate() - n)
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
+}
+
+// Ahmad's 4 pattern events — matching seed.ts windows A/B/C/D
 export function getDemoPatterns(): PatternEvent[] {
   return [
     {
-      id: 'p1',
-      patternType: 'recovery_strain',
+      id: 'evt_001',
+      patternType: 'autonomic_strain',
       startDate: daysAgoIso(82),
       endDate: daysAgoIso(77),
       durationDays: 6,
       severity: 'moderate',
-      title: 'Recovery Strain Pattern',
+      title: 'Your body worked harder than usual',
       summary:
-        'Your resting heart rate was elevated and HRV was suppressed below your usual range for 6 days. Sleep was also slightly shorter than your baseline during this period.',
+        'High pollen and shifting barometric pressure put extra strain on your system, elevating your resting heart rate and shortening your sleep for 6 days.',
       supportingSignals: [
-        { label: 'Resting HR', change: '+11%', direction: 'up' },
-        { label: 'HRV',        change: '−19%', direction: 'down' },
-        { label: 'Sleep',      change: '−11%', direction: 'down' },
+        { label: 'Resting heart rate', change: '+8 bpm',  direction: 'up' },
+        { label: 'Heart rate variability', change: '−12 ms', direction: 'down' },
+        { label: 'Sleep duration',     change: '−1.5 hrs', direction: 'down' },
       ],
       suggestedAction:
-        'Pattern resolved. Worth monitoring if it reappears.',
-      confidence: 84,
+        'Run your HEPA filter overnight and consider an antihistamine before bed when pollen is high.',
+      confidence: 88,
       isActive: false,
     },
     {
-      id: 'p2',
-      patternType: 'sleep_disruption',
+      id: 'evt_002',
+      patternType: 'low_energy',
       startDate: daysAgoIso(55),
       endDate: daysAgoIso(49),
       durationDays: 7,
       severity: 'high',
-      title: 'Sleep Disruption & Recovery Strain',
+      title: 'Poor air quality triggered extreme fatigue',
       summary:
-        'Sleep dropped significantly and stayed below your usual baseline for 7 days, accompanied by elevated resting heart rate, lower HRV and increased late-night screen time. This is a recurrence of an earlier pattern.',
+        'Wildfire smoke pushed air quality into unhealthy levels for a week. Your daily steps and active minutes dropped sharply — your body conserved energy to protect your lungs.',
       supportingSignals: [
-        { label: 'Sleep',       change: '−17%',  direction: 'down' },
-        { label: 'Resting HR',  change: '+13%',  direction: 'up' },
-        { label: 'HRV',         change: '−24%',  direction: 'down' },
-        { label: 'Screen time', change: '+39%',  direction: 'up' },
+        { label: 'Daily steps',    change: '−4,500',   direction: 'down' },
+        { label: 'Active minutes', change: '−35 mins',  direction: 'down' },
+        { label: 'Screen time',    change: '+2.5 hrs',  direction: 'up' },
       ],
       suggestedAction:
-        'This pattern has appeared more than once. If it recurs, consider preparing a health note.',
-      confidence: 91,
+        'Keep windows closed and prioritise rest over exercise when the Air Quality Index exceeds 100.',
+      confidence: 94,
       isActive: false,
-      recurrenceOf: 'p1',
     },
     {
-      id: 'p3',
+      id: 'evt_003',
       patternType: 'activity_intolerance',
       startDate: daysAgoIso(22),
       endDate: daysAgoIso(17),
       durationDays: 6,
       severity: 'moderate',
-      title: 'Activity Intolerance Pattern',
+      title: 'Weather shift reduced your stamina',
       summary:
-        'A high-activity day was followed by several days of sharply reduced movement, elevated resting heart rate and lower HRV — a pattern associated with poor recovery tolerance in some people.',
+        'A fast-moving cold front combined with high humidity irritated your airways, causing a noticeable drop in your nervous system recovery and daily movement.',
       supportingSignals: [
-        { label: 'Steps',      change: '+82% then −43%', direction: 'irregular' },
-        { label: 'Resting HR', change: '+9%',            direction: 'up' },
-        { label: 'HRV',        change: '−17%',           direction: 'down' },
+        { label: 'Heart rate variability', change: '−15 ms',   direction: 'down' },
+        { label: 'Daily steps',            change: '−3,000',   direction: 'down' },
+        { label: 'Active minutes',         change: '−20 mins', direction: 'down' },
       ],
       suggestedAction:
-        'You may want to monitor how your body responds after high-activity days. This is not a diagnosis.',
-      confidence: 78,
+        'Pace your physical activity on cold-front days and use your maintenance inhaler before going outside.',
+      confidence: 82,
       isActive: false,
     },
     {
-      id: 'p4',
-      patternType: 'recovery_strain',
+      id: 'evt_004',
+      patternType: 'autonomic_strain',
       startDate: daysAgoIso(4),
       endDate: null,
-      durationDays: 4,
+      durationDays: 5,
       severity: 'moderate',
-      title: 'Recovery Strain Pattern',
-      summary:
-        'Your resting heart rate, HRV and sleep duration have all shifted away from your usual baseline and have been outside your normal range for 4 days. This pattern has appeared twice before.',
+      title: 'Astra caught the same pattern early',
+      summary: `The same combination of high pollen and falling pressure that caused your 6-day strain in ${monthAgo(82)} is happening again. Your heart rate is starting to climb — Astra noticed before you felt it.`,
       supportingSignals: [
-        { label: 'Resting HR', change: '+15%', direction: 'up' },
-        { label: 'HRV',        change: '−21%', direction: 'down' },
-        { label: 'Sleep',      change: '−14%', direction: 'down' },
+        { label: 'Resting heart rate',     change: '+6 bpm',    direction: 'up' },
+        { label: 'Heart rate variability', change: '−10 ms',    direction: 'down' },
+        { label: 'Pollen level',           change: 'Very High', direction: 'up' },
       ],
       suggestedAction:
-        'Protect sleep tonight. Reduce intense activity if possible. This may be worth monitoring if it continues beyond a few more days.',
-      confidence: 88,
+        'Start your allergy routine tonight. Acting now can prevent this becoming a multi-day crash.',
+      confidence: 91,
       isActive: true,
-      recurrenceOf: 'p2',
+      recurrenceOf: 'evt_001',
     },
   ]
 }
@@ -99,7 +102,6 @@ export function getActivePattern(patterns: PatternEvent[]): PatternEvent | null 
   return patterns.find((p) => p.isActive) ?? null
 }
 
-// Count how many times the same pattern type has occurred (including current)
 export function countRecurrences(pattern: PatternEvent, allPatterns: PatternEvent[]): number {
   return allPatterns.filter(
     (p) =>
@@ -111,19 +113,19 @@ export function countRecurrences(pattern: PatternEvent, allPatterns: PatternEven
 }
 
 export const PATTERN_LABELS: Record<PatternType, string> = {
-  recovery_strain:    'Recovery Strain',
-  sleep_disruption:   'Sleep Disruption',
-  low_energy:         'Low Energy',
+  recovery_strain:      'Recovery Strain',
+  sleep_disruption:     'Sleep Disruption',
+  low_energy:           'Low Energy',
   activity_intolerance: 'Activity Intolerance',
-  autonomic_strain:   'Autonomic Strain',
-  routine_disruption: 'Routine Disruption',
+  autonomic_strain:     'Autonomic Strain',
+  routine_disruption:   'Routine Disruption',
 }
 
 export const PATTERN_DESCRIPTIONS: Record<PatternType, string> = {
-  recovery_strain:    'Resting HR and HRV signals indicate your body may be under strain',
-  sleep_disruption:   'Sleep duration and consistency have shifted from your usual pattern',
-  low_energy:         'Movement and activity are lower than your usual baseline',
+  recovery_strain:      'Resting HR and HRV signals indicate your body may be under strain',
+  sleep_disruption:     'Sleep duration and consistency have shifted from your usual pattern',
+  low_energy:           'Movement and activity are lower than your usual baseline',
   activity_intolerance: 'High-activity periods are followed by significant recovery drops',
-  autonomic_strain:   'HRV and resting HR signals are deviating together',
-  routine_disruption: 'Your sleep-wake timing and daily routine have shifted',
+  autonomic_strain:     'HRV and resting HR signals are deviating together',
+  routine_disruption:   'Your sleep-wake timing and daily routine have shifted',
 }
