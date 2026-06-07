@@ -3,11 +3,12 @@ import { Switch, Route, Router as WouterRouter } from 'wouter'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider } from '@/components/ThemeProvider'
 
-const LandingPage  = lazy(() => import('@/pages/Landing'))
-const LoginPage    = lazy(() => import('@/pages/auth/Login'))
-const SignupPage   = lazy(() => import('@/pages/auth/Signup'))
-const AuthCallback = lazy(() => import('@/pages/auth/Callback'))
-const AppLayout    = lazy(() => import('@/pages/app/AppLayout'))
+const LandingPage    = lazy(() => import('@/pages/Landing'))
+const OnboardingPage = lazy(() => import('@/pages/Onboarding'))
+const LoginPage      = lazy(() => import('@/pages/auth/Login'))
+const SignupPage     = lazy(() => import('@/pages/auth/Signup'))
+const AuthCallback   = lazy(() => import('@/pages/auth/Callback'))
+const AppLayout      = lazy(() => import('@/pages/app/AppLayout'))
 
 const queryClient = new QueryClient()
 
@@ -27,6 +28,7 @@ export default function App() {
           <Suspense fallback={<PageLoader />}>
             <Switch>
               <Route path="/"                component={LandingPage} />
+              <Route path="/onboarding"      component={OnboardingPage} />
               <Route path="/auth/login"      component={LoginPage} />
               <Route path="/auth/signup"     component={SignupPage} />
               <Route path="/auth/callback"   component={AuthCallback} />

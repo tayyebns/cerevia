@@ -71,8 +71,11 @@ export default function Landing() {
             ADHD, autism, and other neurodivergent profiles make self-tracking almost impossible. Astra does it for you - no journaling, no check-ins, no apps to remember. Just one clear signal when something in your body has shifted.
           </p>
           <div className="landing-hero-actions">
-            <button className="landing-cta-primary" onClick={handleTryDemo}>
-              See for yourself
+            <button className="landing-cta-primary" onClick={() => navigate('/onboarding')}>
+              Get started
+            </button>
+            <button className="landing-cta-secondary" onClick={handleTryDemo}>
+              See it in action
             </button>
           </div>
 
