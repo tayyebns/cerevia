@@ -1,12 +1,13 @@
-import { Suspense, useRef } from 'react'
+import { Suspense, useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, OrbitControls, Environment, Float } from '@react-three/drei'
 import * as THREE from 'three'
 
-const GLB_PATH = '/astraband.glb'
+const GLB_PATH = '/astra_band_final.glb'
 
 function BandModel() {
   const { scene } = useGLTF(GLB_PATH)
+  const cloned = useMemo(() => scene.clone(true), [scene])
   const ref = useRef<THREE.Group>(null)
 
   useFrame((_, delta) => {
@@ -14,8 +15,8 @@ function BandModel() {
   })
 
   return (
-    <group ref={ref} scale={2.2} position={[0, -0.2, 0]}>
-      <primitive object={scene} />
+    <group ref={ref} scale={1.2} position={[0, -0.2, 0]}>
+      <primitive object={cloned} />
     </group>
   )
 }
@@ -100,7 +101,7 @@ export default function BandViewer({ hasGlb = false }: BandViewerProps) {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Canvas
-        camera={{ position: [0, 0, 4.5], fov: 42 }}
+        camera={{ position: [0, 0, 8], fov: 42 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >

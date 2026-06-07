@@ -5,7 +5,7 @@ import { loadDemoData } from '@/lib/demo/store'
 const BandViewer = lazy(() => import('@/components/landing/BandViewer'))
 
 // Flip to true once public/astraband.glb is dropped in the public folder
-const HAS_GLB = false
+const HAS_GLB = true
 
 const FEATURES = [
   { icon: '◎', label: 'Passive pattern detection',    desc: 'No forms. No dashboards. Astra observes while you live.' },
@@ -109,7 +109,7 @@ export default function Landing() {
                 </div>
               </div>
             }>
-              <BandViewer hasGlb={HAS_GLB} />
+              <BandViewer hasGlb={false} />
             </Suspense>
           </div>
           <div className="landing-hero-band-label">
