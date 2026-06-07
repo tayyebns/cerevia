@@ -99,17 +99,8 @@ export default function Landing() {
 
         <div className="landing-hero-band">
           <div className="landing-hero-band-viewer">
-            <Suspense fallback={
-              <div className="landing-band-ring-fallback">
-                <div className="landing-band-ring">
-                  <div className="landing-band-ring-inner">
-                    <span className="landing-band-ring-label">AstraBand</span>
-                    <span className="landing-band-ring-sub">in development</span>
-                  </div>
-                </div>
-              </div>
-            }>
-              <BandViewer hasGlb={HAS_GLB} />
+            <Suspense fallback={null}>
+              <BandViewer />
             </Suspense>
           </div>
           <div className="landing-hero-band-label">
@@ -371,17 +362,8 @@ export default function Landing() {
 
           <div className="landing-band-canvas-wrap">
             <div className="landing-band-canvas">
-              <Suspense fallback={
-                <div className="landing-band-canvas-fallback">
-                  <div className="landing-band-ring">
-                    <div className="landing-band-ring-inner">
-                      <span className="landing-band-ring-label">AstraBand</span>
-                      <span className="landing-band-ring-sub">in development</span>
-                    </div>
-                  </div>
-                </div>
-              }>
-                <BandViewer hasGlb={HAS_GLB} />
+              <Suspense fallback={null}>
+                <BandViewer />
               </Suspense>
             </div>
             <div className="landing-band-canvas-caption">
