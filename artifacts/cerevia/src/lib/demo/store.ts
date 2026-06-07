@@ -1,8 +1,9 @@
 import { useSyncExternalStore } from 'react'
-import type { DailyReading, PatternEvent, UserBaseline, AstraUser } from './types'
+import type { DailyReading, PatternEvent, UserBaseline, AstraUser, EnvironmentalReading } from './types'
 import { generateSeedData, SEED_USER } from './seed'
 import { calculateBaseline } from './baseline'
 import { getDemoPatterns } from './patterns'
+import { generateEnvironmentalData } from './env'
 
 interface AstraState {
   isDemoLoaded: boolean
@@ -10,6 +11,7 @@ interface AstraState {
   readings: DailyReading[]
   baseline: UserBaseline
   patterns: PatternEvent[]
+  env: EnvironmentalReading[]
 }
 
 const EMPTY_BASELINE: UserBaseline = {
@@ -29,6 +31,7 @@ let state: AstraState = {
   readings: [],
   baseline: EMPTY_BASELINE,
   patterns: [],
+  env: [],
 }
 
 const listeners = new Set<() => void>()
@@ -41,7 +44,8 @@ export function loadDemoData() {
   const readings  = generateSeedData()
   const baseline  = calculateBaseline(readings, 30)
   const patterns  = getDemoPatterns()
-  state = { isDemoLoaded: true, user: SEED_USER, readings, baseline, patterns }
+  const env       = generateEnvironmentalData()
+  state = { isDemoLoaded: true, user: SEED_USER, readings, baseline, patterns, env }
   notify()
 }
 

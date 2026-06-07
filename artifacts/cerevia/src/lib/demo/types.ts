@@ -80,3 +80,16 @@ export interface AstraUser {
   baselinePeriodDays: number
   onboardedAt: string
 }
+
+export type PollenLevel = 'low' | 'moderate' | 'high' | 'very_high'
+export type PressureTrend = 'rising' | 'stable' | 'falling' | 'dropping_fast'
+
+export interface EnvironmentalReading {
+  date: string
+  aqi: number              // 0–300 Air Quality Index
+  pollenLevel: PollenLevel
+  pressureTrend: PressureTrend
+  heatIndex: number        // feels-like °C
+  humidity: number         // 0–100 %
+  uvIndex: number          // 0–11
+}

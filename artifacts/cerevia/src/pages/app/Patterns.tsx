@@ -1,6 +1,7 @@
 import { useAstraStore } from '@/lib/demo/store'
 import { countRecurrences, PATTERN_LABELS, PATTERN_DESCRIPTIONS } from '@/lib/demo/patterns'
 import type { PatternEvent } from '@/lib/demo/types'
+import { envPatternTrigger } from '@/lib/demo/env'
 import { useState } from 'react'
 
 const SEVERITY_COLOR: Record<string, string> = {
@@ -20,9 +21,10 @@ function formatDate(iso: string) {
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
-function PatternCard({ pattern, allPatterns }: { pattern: PatternEvent; allPatterns: PatternEvent[] }) {
+function PatternCard({ pattern, allPatterns, envData }: { pattern: PatternEvent; allPatterns: PatternEvent[]; envData: import('@/lib/demo/types').EnvironmentalReading[] }) {
   const [expanded, setExpanded] = useState(false)
   const recurrences = countRecurrences(pattern, allPatterns)
+  const trigger = envPatternTrigger(envData, pattern.startDate, pattern.endDate)
 
   return (
     <div className={`pattern-card ${pattern.isActive ? 'pattern-card-active' : ''}`}>
@@ -70,6 +72,18 @@ function PatternCard({ pattern, allPatterns }: { pattern: PatternEvent; allPatte
           <div className="pattern-confidence">
             Pattern confidence: <strong>{pattern.confidence}%</strong>
           </div>
+
+          {trigger && (
+            <div className="pattern-env-trigger">
+              <span className="pattern-env-icon">🌍</span>
+              <div>
+                <span className="pattern-env-label">Environmental context</span>
+                <p className="pattern-env-text">
+                  During this period: <strong>{trigger}</strong>. Astra links this combination to this pattern type in your history.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -77,7 +91,7 @@ function PatternCard({ pattern, allPatterns }: { pattern: PatternEvent; allPatte
 }
 
 export default function Patterns() {
-  const { patterns } = useAstraStore()
+  const { patterns, env } = useAstraStore()
 
   const sorted = [...patterns].sort(
     (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
@@ -120,7 +134,7 @@ export default function Patterns() {
         <section className="patterns-section">
           <div className="patterns-section-label">Currently active</div>
           {active.map((p) => (
-            <PatternCard key={p.id} pattern={p} allPatterns={patterns} />
+            <PatternCard key={p.id} pattern={p} allPatterns={patterns} envData={env} />
           ))}
         </section>
       )}
@@ -128,7 +142,7 @@ export default function Patterns() {
       <section className="patterns-section">
         <div className="patterns-section-label">Resolved</div>
         {resolved.map((p) => (
-          <PatternCard key={p.id} pattern={p} allPatterns={patterns} />
+          <PatternCard key={p.id} pattern={p} allPatterns={patterns} envData={env} />
         ))}
       </section>
 

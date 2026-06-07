@@ -163,6 +163,203 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ── 3 Phone screens: Signal → Context → Action ── */}
+      <section className="landing-section landing-section-alt">
+        <h2 className="landing-section-title">From signal to one clear answer</h2>
+        <p className="landing-section-sub">
+          Most apps show you data. Astra connects your body signals to what's happening around you — and gives you one thing to do.
+        </p>
+
+        <div className="landing-phones">
+
+          {/* Phone 1: What's happening */}
+          <div className="landing-phone-wrap landing-phone-left">
+            <div className="landing-phone-label">What's happening</div>
+            <div className="landing-phone">
+              <div className="phone-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div className="phone-screen">
+                <div className="phone-app-header">
+                  <span className="phone-app-logo">Astra</span>
+                  <span className="phone-demo-pip">Demo</span>
+                </div>
+                <div className="phone-date">Saturday, 7 June</div>
+                <div className="phone-greeting">Good morning, Alex.</div>
+
+                <div className="phone-pattern-card">
+                  <div className="phone-pattern-top">
+                    <span className="phone-dot phone-dot-moderate" />
+                    <span className="phone-pattern-type">Recovery Strain</span>
+                    <span className="phone-active-pill">Active · 4 days</span>
+                  </div>
+                  <div className="phone-pattern-title">Your body is working harder than usual</div>
+                  <p className="phone-pattern-body">
+                    RHR elevated, HRV suppressed for 4 consecutive days — outside your personal baseline.
+                  </p>
+                  <div className="phone-signals">
+                    <span className="phone-signal phone-signal-bad">↑ Resting HR +23%</span>
+                    <span className="phone-signal phone-signal-bad">↓ HRV −31%</span>
+                    <span className="phone-signal phone-signal-bad">↓ Sleep −0.9h</span>
+                  </div>
+                  <div className="phone-recurrence-note">↻ 3rd time this pattern has appeared</div>
+                </div>
+
+                <div className="phone-env-strip">
+                  <div className="phone-env-title">Today's environment</div>
+                  <div className="phone-env-row">
+                    <span>🌫</span>
+                    <span className="phone-env-item-name">Air quality</span>
+                    <span className="phone-env-bad">AQI 118 — Unhealthy</span>
+                  </div>
+                  <div className="phone-env-row">
+                    <span>🌸</span>
+                    <span className="phone-env-item-name">Pollen</span>
+                    <span className="phone-env-bad">Very High</span>
+                  </div>
+                  <div className="phone-env-row">
+                    <span>📉</span>
+                    <span className="phone-env-item-name">Pressure</span>
+                    <span className="phone-env-bad">Dropping fast</span>
+                  </div>
+                  <div className="phone-env-insight-pill">
+                    ⚠ Matches your pattern trigger
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Phone 2: When / why it started */}
+          <div className="landing-phone-wrap landing-phone-center">
+            <div className="landing-phone-label">When it started — and why</div>
+            <div className="landing-phone landing-phone-elevated">
+              <div className="phone-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div className="phone-screen">
+                <div className="phone-app-header">
+                  <span className="phone-app-logo">Astra</span>
+                  <span className="phone-demo-pip">Demo</span>
+                </div>
+                <div className="phone-section-title">What triggered this</div>
+
+                <div className="phone-timeline">
+                  <div className="phone-tl-row">
+                    <div className="phone-tl-left">
+                      <div className="phone-tl-dot phone-tl-env" />
+                      <div className="phone-tl-line" />
+                    </div>
+                    <div className="phone-tl-body">
+                      <div className="phone-tl-date">3 Jun</div>
+                      <div className="phone-tl-event">Pollen peaked: <strong>Very High</strong></div>
+                      <div className="phone-tl-sub">Barometric pressure began falling</div>
+                    </div>
+                  </div>
+                  <div className="phone-tl-row">
+                    <div className="phone-tl-left">
+                      <div className="phone-tl-dot phone-tl-body-sig" />
+                      <div className="phone-tl-line" />
+                    </div>
+                    <div className="phone-tl-body">
+                      <div className="phone-tl-date">4 Jun</div>
+                      <div className="phone-tl-event">Sleep dropped to <strong>6.2h</strong></div>
+                      <div className="phone-tl-sub">↓ from 7.2h baseline · screen time up</div>
+                    </div>
+                  </div>
+                  <div className="phone-tl-row">
+                    <div className="phone-tl-left">
+                      <div className="phone-tl-dot phone-tl-body-sig" />
+                      <div className="phone-tl-line" />
+                    </div>
+                    <div className="phone-tl-body">
+                      <div className="phone-tl-date">5 Jun</div>
+                      <div className="phone-tl-event">HRV: <strong>29ms</strong> · RHR: <strong>72 bpm</strong></div>
+                      <div className="phone-tl-sub">Both outside personal baseline</div>
+                    </div>
+                  </div>
+                  <div className="phone-tl-row">
+                    <div className="phone-tl-left">
+                      <div className="phone-tl-dot phone-tl-flag" />
+                    </div>
+                    <div className="phone-tl-body">
+                      <div className="phone-tl-date">6 Jun</div>
+                      <div className="phone-tl-event phone-tl-flagged">Pattern detected</div>
+                      <div className="phone-tl-sub">Recovery Strain · Moderate severity</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="phone-insight-box">
+                  <div className="phone-insight-label">Astra's pattern memory</div>
+                  <p className="phone-insight-text">
+                    The same combination — <strong>high pollen + falling pressure</strong> — appeared before your Recovery Strain episodes in April and February. Your body responds consistently to this trigger.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Phone 3: One clear action */}
+          <div className="landing-phone-wrap landing-phone-right">
+            <div className="landing-phone-label">One clear action</div>
+            <div className="landing-phone">
+              <div className="phone-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div className="phone-screen">
+                <div className="phone-app-header">
+                  <span className="phone-app-logo">Astra</span>
+                  <span className="phone-demo-pip">Demo</span>
+                </div>
+                <div className="phone-section-title">What Astra suggests</div>
+
+                <div className="phone-action-hero">
+                  <div className="phone-action-icon">◎</div>
+                  <div className="phone-action-title">Skip intensity today</div>
+                  <p className="phone-action-body">
+                    Your autonomic system is managing environmental load. Adding physical or cognitive stress will slow recovery, not help it.
+                  </p>
+                </div>
+
+                <div className="phone-why-section">
+                  <div className="phone-why-title">Why today specifically</div>
+                  <div className="phone-why-row">
+                    <span className="phone-why-dot" />
+                    <span>HRV 29ms vs your usual 48ms</span>
+                  </div>
+                  <div className="phone-why-row">
+                    <span className="phone-why-dot" />
+                    <span>Pollen forecast remains Very High</span>
+                  </div>
+                  <div className="phone-why-row">
+                    <span className="phone-why-dot" />
+                    <span>Pressure still dropping</span>
+                  </div>
+                  <div className="phone-why-row">
+                    <span className="phone-why-dot" />
+                    <span>This pattern resolved in 2–3 days each time before</span>
+                  </div>
+                </div>
+
+                <div className="phone-note-cta">
+                  Export health note
+                  <span className="phone-note-cta-arrow">→</span>
+                </div>
+
+                <p className="phone-safety-note">
+                  Not a diagnosis. Worth monitoring.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* ── AstraBand ── */}
       <section id="astraband" className="landing-band-full">
         <div className="landing-band-full-inner">
