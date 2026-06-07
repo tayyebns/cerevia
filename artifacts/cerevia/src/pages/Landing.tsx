@@ -60,13 +60,13 @@ export default function Landing() {
       {/* Hero: text left, 3D band right */}
       <section className="landing-hero-split">
         <div className="landing-hero-text">
-          <div className="landing-hero-badge">Passive Health Pattern Intelligence</div>
+          <div className="landing-hero-badge">Made for neurodivergent bodies</div>
           <h1 className="landing-h1">
-            Your wearable tracks.<br />
-            <span className="landing-h1-accent">Astra tells you what changed.</span>
+            Your body has patterns.<br />
+            <span className="landing-h1-accent">Astra is the first to see them.</span>
           </h1>
           <p className="landing-hero-sub">
-            No forms. No dashboards. No guessing. Connect your existing wearable and Astra learns your personal baseline, detects meaningful patterns, and gives you one clear priority each day.
+            ADHD, autism, and other neurodivergent profiles make self-tracking almost impossible. Astra does it for you — no journaling, no check-ins, no apps to remember. Just one clear signal when something in your body has shifted.
           </p>
           <div className="landing-hero-actions">
             <button className="landing-cta-primary" onClick={handleTryDemo}>
@@ -115,7 +115,7 @@ export default function Landing() {
           <div className="landing-hero-band-label">
             <span className="landing-band-badge">In development</span>
             <span className="landing-hero-band-name">AstraBand</span>
-            <span className="landing-hero-band-sub">The passive wearable built for chronic illness, not fitness</span>
+            <span className="landing-hero-band-sub">The wearable made for neurodivergent bodies, not fitness apps</span>
           </div>
         </div>
       </section>
