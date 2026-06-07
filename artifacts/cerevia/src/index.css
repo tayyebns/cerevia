@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -113,11 +113,11 @@
   --sidebar-accent-foreground: 240 15% 25%;
   --sidebar-ring: 250 80% 65%;
 
-  --app-font-sans: 'Nunito', sans-serif;
-  --app-font-serif: 'Cormorant Garamond', Georgia, serif;
+  --app-font-sans: 'Inter', sans-serif;
+  --app-font-serif: 'DM Serif Display', Georgia, serif;
   --app-font-mono: Menlo, monospace;
-  --font-sans: 'Nunito', sans-serif;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
   --radius: 0.75rem;
 
   --shadow: 0 2px 12px rgba(0,0,0,0.07);
@@ -253,7 +253,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     line-height: 1.6;
     margin: 0;
@@ -435,7 +435,7 @@
   display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
 }
 .landing-hero-band-name {
-  font-family: var(--font-serif); font-size: 22px; font-weight: 300; color: var(--text);
+  font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--text);
 }
 .landing-hero-band-sub { font-size: 13px; color: var(--text-muted); }
 
@@ -449,7 +449,7 @@
 .landing-h1 {
   font-family: var(--font-serif);
   font-size: clamp(32px, 4vw, 54px);
-  font-weight: 300; line-height: 1.12;
+  font-weight: 400; line-height: 1.12;
   color: var(--text); margin: 0 0 18px;
 }
 .landing-h1-accent { color: var(--brand); }
@@ -483,11 +483,42 @@
 }
 .landing-stat { flex: 1; padding: 16px 12px; text-align: center; }
 .landing-stat-value {
-  display: block; font-family: var(--font-serif); font-size: 26px; font-weight: 300;
+  display: block; font-family: var(--font-serif); font-size: 26px; font-weight: 400;
   color: var(--brand); margin-bottom: 3px;
 }
 .landing-stat-label { font-size: 11px; color: var(--text-muted); font-weight: 500; }
 .landing-stat-divider { width: 1px; align-self: stretch; background: var(--border-color); }
+
+/* Problem section */
+.landing-problem-section {
+  background: var(--brand-light);
+  max-width: 100%;
+  padding: 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+.landing-problem-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+.landing-problem-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 18px;
+}
+.landing-problem-body {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+}
 
 /* Sections */
 .landing-section { max-width: 880px; margin: 0 auto; padding: 64px 24px; }
@@ -495,7 +526,7 @@
 .landing-section-alt > * { max-width: 880px; margin-left: auto; margin-right: auto; }
 .landing-section-title {
   font-family: var(--font-serif); font-size: clamp(28px, 4vw, 42px);
-  font-weight: 300; color: var(--text); margin: 0 0 12px; text-align: center;
+  font-weight: 400; color: var(--text); margin: 0 0 12px; text-align: center;
 }
 .landing-section-sub {
   font-size: 16px; color: var(--text-muted); text-align: center;
@@ -521,7 +552,7 @@
 .landing-steps { display: flex; flex-direction: column; gap: 24px; max-width: 640px; margin: 0 auto; }
 .landing-step { display: flex; gap: 20px; align-items: flex-start; }
 .landing-step-n {
-  font-family: var(--font-serif); font-size: 28px; font-weight: 300;
+  font-family: var(--font-serif); font-size: 28px; font-weight: 400;
   color: var(--brand); flex-shrink: 0; line-height: 1; min-width: 36px;
 }
 .landing-step-title { font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 4px; }
@@ -562,7 +593,7 @@
   padding: 4px 12px; border-radius: 999px; margin-bottom: 16px;
 }
 .landing-band-title {
-  font-family: var(--font-serif); font-size: 42px; font-weight: 300;
+  font-family: var(--font-serif); font-size: 42px; font-weight: 400;
   color: var(--text); margin: 0 0 16px;
 }
 .landing-band-body { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
@@ -644,7 +675,7 @@
 .landing-final-cta { text-align: center; padding-top: 48px; padding-bottom: 48px; }
 .landing-final-title {
   font-family: var(--font-serif); font-size: clamp(28px, 4vw, 44px);
-  font-weight: 300; color: var(--text); margin-bottom: 12px;
+  font-weight: 400; color: var(--text); margin-bottom: 12px;
 }
 .landing-final-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 28px; }
 .landing-safety { font-size: 12px; color: var(--text-subtle); margin-top: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
@@ -713,8 +744,8 @@
   color: var(--brand); background: var(--brand-light); padding: 2px 7px; border-radius: 999px;
 }
 .phone-date { font-size: 11px; color: var(--text-muted); }
-.phone-greeting { font-family: var(--font-serif); font-size: 16px; font-weight: 300; color: var(--text); margin-bottom: 4px; }
-.phone-section-title { font-family: var(--font-serif); font-size: 16px; font-weight: 300; color: var(--text); margin-bottom: 8px; }
+.phone-greeting { font-family: var(--font-serif); font-size: 16px; font-weight: 400; color: var(--text); margin-bottom: 4px; }
+.phone-section-title { font-family: var(--font-serif); font-size: 16px; font-weight: 400; color: var(--text); margin-bottom: 8px; }
 
 /* Phone — pattern card */
 .phone-pattern-card {
@@ -781,7 +812,7 @@
   border-radius: 12px; padding: 14px; text-align: center; margin-bottom: 10px;
 }
 .phone-action-icon  { font-size: 24px; color: var(--brand); margin-bottom: 6px; }
-.phone-action-title { font-family: var(--font-serif); font-size: 16px; font-weight: 300; color: var(--text); margin-bottom: 6px; }
+.phone-action-title { font-family: var(--font-serif); font-size: 16px; font-weight: 400; color: var(--text); margin-bottom: 6px; }
 .phone-action-body  { font-size: 11px; color: var(--text-muted); line-height: 1.55; margin: 0; }
 
 .phone-why-section { background: var(--surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; margin-bottom: 10px; }
@@ -861,7 +892,7 @@
   animation: fadeUp 0.3s ease both;
 }
 .screen-title {
-  font-family: var(--font-serif); font-size: 28px; font-weight: 300;
+  font-family: var(--font-serif); font-size: 28px; font-weight: 400;
   color: var(--text); margin: 0 0 6px;
 }
 .screen-subtitle {
@@ -878,7 +909,7 @@
    ============================================================ */
 .today-date { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
 .today-greeting {
-  font-family: var(--font-serif); font-size: 26px; font-weight: 300;
+  font-family: var(--font-serif); font-size: 26px; font-weight: 400;
   color: var(--text); margin-bottom: 24px;
 }
 
@@ -896,7 +927,7 @@
   font-size: 11px; font-weight: 700; color: var(--warning);
   background: var(--warning-bg); padding: 2px 8px; border-radius: 999px;
 }
-.today-pattern-title { font-family: var(--font-serif); font-size: 22px; font-weight: 300; color: var(--text); }
+.today-pattern-title { font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--text); }
 .today-pattern-summary { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; }
 
 /* Signals */
@@ -961,7 +992,7 @@
   border-radius: 16px; padding: 32px 20px; text-align: center; margin-bottom: 24px;
 }
 .today-clear-icon { font-size: 32px; color: var(--positive); margin-bottom: 12px; }
-.today-clear-title { font-family: var(--font-serif); font-size: 20px; font-weight: 300; color: var(--text); margin-bottom: 10px; }
+.today-clear-title { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 10px; }
 .today-clear-body { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
 
 /* Snapshot */
@@ -1027,7 +1058,7 @@
   color: var(--brand); background: var(--brand-light); padding: 2px 8px;
   border-radius: 999px; display: inline-block; margin-bottom: 6px;
 }
-.today-band-teaser-name { font-family: var(--font-serif); font-size: 18px; font-weight: 300; color: var(--text); margin-bottom: 4px; }
+.today-band-teaser-name { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--text); margin-bottom: 4px; }
 .today-band-teaser-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
 .today-band-teaser-icon { font-size: 40px; color: var(--brand); opacity: 0.3; flex-shrink: 0; }
 
@@ -1180,7 +1211,7 @@
   background: var(--surface-2); border-radius: 10px; padding: 14px; margin-bottom: 14px;
 }
 .note-main-pattern-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; color: var(--text-subtle); margin-bottom: 4px; }
-.note-main-pattern-name { font-family: var(--font-serif); font-size: 18px; font-weight: 300; color: var(--brand); margin-bottom: 6px; }
+.note-main-pattern-name { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--brand); margin-bottom: 6px; }
 .note-main-pattern-summary { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
 .note-pattern-list { display: flex; flex-direction: column; gap: 6px; }

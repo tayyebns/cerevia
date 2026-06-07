@@ -53,7 +53,7 @@ export default function Landing() {
           <button className="landing-nav-link" onClick={() => {
             document.getElementById('astraband')?.scrollIntoView({ behavior: 'smooth' })
           }}>AstraBand</button>
-          <button className="landing-cta-demo" onClick={handleTryDemo}>Try demo</button>
+          <button className="landing-cta-demo" onClick={handleTryDemo}>See it in action</button>
         </div>
       </nav>
 
@@ -70,7 +70,7 @@ export default function Landing() {
           </p>
           <div className="landing-hero-actions">
             <button className="landing-cta-primary" onClick={handleTryDemo}>
-              Try the demo
+              See for yourself
             </button>
           </div>
 
@@ -120,6 +120,16 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* The Problem */}
+      <section className="landing-section landing-problem-section">
+        <div className="landing-problem-inner">
+          <div className="landing-problem-label">The problem</div>
+          <p className="landing-problem-body">
+            Health apps demand exhausting manual data entry from the very people who have the least energy to give. For neurodivergent minds battling cognitive overload, AstraBand completely removes the burden — silently observing your baseline and filtering out the noise to deliver only your highest-priority insights, zero effort required.
+          </p>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="landing-section">
         <h2 className="landing-section-title">Built around a different thesis</h2>
@@ -161,7 +171,7 @@ export default function Landing() {
         </div>
         <div style={{ textAlign: 'center', marginTop: 40 }}>
           <button className="landing-cta-primary" onClick={handleTryDemo}>
-            See it with 90 days of real-looking data
+            See 90 days of Ahmad's patterns
           </button>
         </div>
       </section>
@@ -203,7 +213,7 @@ export default function Landing() {
               <div className="phone-screen">
                 <div className="phone-app-header">
                   <span className="phone-app-logo">Astra</span>
-                  <span className="phone-demo-pip">Demo</span>
+                  <span className="phone-app-badge">Ahmad</span>
                 </div>
                 <div className="phone-date">Saturday, 7 June</div>
                 <div className="phone-greeting">Good morning, Alex.</div>
@@ -243,7 +253,7 @@ export default function Landing() {
               <div className="phone-screen">
                 <div className="phone-app-header">
                   <span className="phone-app-logo">Astra</span>
-                  <span className="phone-demo-pip">Demo</span>
+                  <span className="phone-app-badge">Ahmad</span>
                 </div>
                 <div className="phone-section-title">What triggered this</div>
 
@@ -300,7 +310,7 @@ export default function Landing() {
               <div className="phone-screen">
                 <div className="phone-app-header">
                   <span className="phone-app-logo">Astra</span>
-                  <span className="phone-demo-pip">Demo</span>
+                  <span className="phone-app-badge">Ahmad</span>
                 </div>
                 <div className="phone-section-title">What Astra suggests</div>
 
@@ -341,7 +351,7 @@ export default function Landing() {
               A passive health pattern band purpose-built for continuous wear. Not a smartwatch. No notifications. No fitness scores. Just the signals that existing wearables miss, captured quietly all day and all night.
             </p>
             <p className="landing-band-body" style={{ marginBottom: 24 }}>
-              The software intelligence layer comes first. AstraBand captures the signals existing devices cannot, then feeds them into the same pattern engine you saw in the demo.
+              The software intelligence layer comes first. AstraBand captures the signals existing devices cannot, then feeds them into the same pattern engine powering Astra.
             </p>
             <div className="landing-band-specs">
               {BAND_SPECS.map((s) => (
@@ -386,7 +396,7 @@ export default function Landing() {
         <h2 className="landing-final-title">See 90 days of passive health intelligence</h2>
         <p className="landing-final-sub">No sign-up. No forms. Just what changed.</p>
         <button className="landing-cta-primary landing-cta-large" onClick={handleTryDemo}>
-          Try the demo now
+          See it for yourself
         </button>
         <p className="landing-safety">
           Astra does not diagnose illnesses. It surfaces personal baseline changes and recurring patterns for your own awareness. This is not a diagnosis or medical advice.

@@ -32,7 +32,6 @@ export default function AppLayout() {
       <header className="app-header">
         <span className="app-header-logo">Astra</span>
         <div className="app-header-right">
-          <span className="app-demo-badge">Demo</span>
           <a href="/" className="app-header-link">← Exit</a>
         </div>
       </header>

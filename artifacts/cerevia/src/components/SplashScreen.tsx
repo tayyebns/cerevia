@@ -193,25 +193,6 @@ export function SplashScreen() {
               Your health, clearly tracked.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 3.1, duration: 0.4 }}
-              style={{
-                marginTop: 20,
-                padding: '4px 12px',
-                borderRadius: 999,
-                border: '1px solid rgba(104,184,175,0.2)',
-                background: 'rgba(104,184,175,0.07)',
-                fontFamily: 'Nunito, sans-serif',
-                fontSize: 11,
-                fontWeight: 600,
-                color: 'rgba(104,184,175,0.7)',
-                letterSpacing: '0.06em',
-              }}
-            >
-              Hackathon Demo
-            </motion.div>
           </div>
 
           <div

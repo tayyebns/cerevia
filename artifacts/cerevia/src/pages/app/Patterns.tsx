@@ -172,7 +172,7 @@ export default function Patterns() {
         </motion.div>
       )}
 
-      {/* Day grid */}
+      {/* Week timeline */}
       <motion.div {...fadeUp(0.1)} style={{
         background: 'var(--card-bg)',
         border: '1px solid var(--border-color)',
@@ -182,40 +182,84 @@ export default function Patterns() {
       }}>
         <div style={{ marginBottom: 14 }}>
           <div style={{ fontFamily: 'var(--font-serif)', fontSize: 17, color: 'var(--text)', marginBottom: 2 }}>
-            90 days at a glance
+            90 days, week by week
           </div>
           <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
             {goodCount} good days · {roughCount} rough days
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-          {weeks.map((week, wi) => (
-            <div key={wi} style={{ display: 'flex', gap: 3 }}>
-              {week.map((d, di) => (
-                <div
-                  key={di}
-                  title={`${d.date} · ${DOT[d.q].label}`}
-                  style={{
-                    flex: 1,
-                    height: 16,
-                    borderRadius: 3,
-                    background: DOT[d.q].color,
-                    opacity: d.q === 'good' ? 0.45 : d.q === 'off' ? 0.7 : 0.88,
-                  }}
-                />
-              ))}
+        <div style={{ display: 'flex', gap: 14, marginBottom: 14 }}>
+          {(['good', 'off', 'rough'] as const).map(q => (
+            <div key={q} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--text-muted)' }}>
+              <span style={{ width: 10, height: 10, borderRadius: 2, background: DOT[q].color, display: 'inline-block', opacity: 0.8 }} />
+              {DOT[q].label}
             </div>
           ))}
         </div>
 
-        <div style={{ display: 'flex', gap: 14, marginTop: 12 }}>
-          {(['good', 'off', 'rough'] as const).map(q => (
-            <div key={q} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--text-muted)' }}>
-              <span style={{ width: 10, height: 10, borderRadius: 2, background: DOT[q].color, display: 'inline-block', opacity: 0.75 }} />
-              {DOT[q].label}
-            </div>
-          ))}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+          {weeks.map((week, wi) => {
+            const weekStart = week[0]?.date
+            const weekEnd   = week[week.length - 1]?.date
+            const label = weekStart
+              ? new Date(weekStart).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+              : ''
+            // find any pattern that overlaps this week
+            const event = sorted.find(p =>
+              weekStart && weekEnd &&
+              p.startDate <= weekEnd &&
+              (p.endDate ? p.endDate >= weekStart : true)
+            )
+            const hasRough = week.some(d => d.q === 'rough')
+            return (
+              <div key={wi}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{
+                    fontSize: 11, color: 'var(--text-muted)',
+                    width: 44, flexShrink: 0, fontVariantNumeric: 'tabular-nums',
+                  }}>
+                    {label}
+                  </span>
+                  <div style={{ display: 'flex', gap: 3, flex: 1 }}>
+                    {week.map((d, di) => (
+                      <div
+                        key={di}
+                        title={`${d.date} · ${DOT[d.q].label}`}
+                        style={{
+                          flex: 1, height: 18, borderRadius: 4,
+                          background: DOT[d.q].color,
+                          opacity: d.q === 'good' ? 0.4 : d.q === 'off' ? 0.65 : 0.85,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {event && hasRough && (
+                  <div style={{
+                    marginLeft: 52, marginTop: 4, marginBottom: 2,
+                    display: 'flex', alignItems: 'center', gap: 6,
+                  }}>
+                    <span style={{
+                      width: 1, height: 28, background: 'var(--border-color)',
+                      display: 'inline-block', flexShrink: 0,
+                    }} />
+                    <span style={{
+                      fontSize: 11, color: event.isActive ? '#ea580c' : 'var(--text-muted)',
+                      lineHeight: 1.4,
+                    }}>
+                      {event.title}
+                      {event.isActive && <span style={{
+                        marginLeft: 6, fontSize: 10, fontWeight: 600,
+                        color: '#ea580c', background: 'rgba(234,88,12,0.1)',
+                        padding: '1px 6px', borderRadius: 99,
+                      }}>now</span>}
+                    </span>
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
       </motion.div>
 
