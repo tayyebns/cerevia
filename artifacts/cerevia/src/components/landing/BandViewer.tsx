@@ -3,7 +3,10 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, OrbitControls, Environment, Float } from '@react-three/drei'
 import * as THREE from 'three'
 
-const GLB_PATH = '/astra_band_final.glb'
+const GLB_PATH = '/astraband_opt.glb'
+
+// Start fetching the GLB as soon as this module loads — not on mount
+useGLTF.preload(GLB_PATH)
 
 function BandModel() {
   const { scene } = useGLTF(GLB_PATH)
