@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark" style="color-scheme: dark">
+<html lang="en" style="color-scheme: light">
   <head>
     <meta charset="UTF-8" />
     <script>
@@ -9,13 +9,12 @@
       (function () {
         try {
           var stored = localStorage.getItem('theme');
-          var isDark = stored ? stored !== 'light' : true;
+          var isDark = stored ? stored === 'dark' : false;
           var el = document.documentElement;
           el.classList.toggle('dark', isDark);
           el.style.colorScheme = isDark ? 'dark' : 'light';
         } catch (e) {
-          document.documentElement.classList.add('dark');
-          document.documentElement.style.colorScheme = 'dark';
+          document.documentElement.style.colorScheme = 'light';
         }
       })();
     </script>
